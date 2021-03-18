@@ -15,7 +15,7 @@ public class Main extends JPanel implements ActionListener {
     }
 
     public void paint(Graphics g) {
-        g.drawImage(bgImage, 0, 0, frame.getWidth(), frame.getHeight(), null);
+        g.drawImage(bgImage, 0, 0, Display.panelWidth, Display.panelHeight, null);
     }
 
     @Override
