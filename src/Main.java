@@ -11,7 +11,9 @@ public class Main extends JPanel implements ActionListener {
 
     public Main(JFrame frame) {
         timerDraw.start();
+        frame.setSize(Display.panelWidth, Display.panelHeight);
         this.frame = frame;
+
         frame.addMouseListener(new MouseAdapter() {
 
             @Override
