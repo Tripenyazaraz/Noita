@@ -1,21 +1,28 @@
+import Pixels.Sand;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 public class Main extends JPanel implements ActionListener {
 
-    Timer timer = new Timer(20, this);
-    Image bgImage = new ImageIcon("textures/BG.jpg").getImage();
+    Timer timerDraw = new Timer(20, this);
     JFrame frame;
 
     public Main(JFrame frame) {
-        timer.start();
+        timerDraw.start();
         this.frame = frame;
+        frame.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.out.println("типо писок");
+            }
+        });
     }
 
     public void paint(Graphics g) {
-        g.drawImage(bgImage, 0, 0, Display.panelWidth, Display.panelHeight, null);
+        g.drawImage(Display.bgImage, 0, 0, Display.panelWidth, Display.panelHeight, null);
     }
 
     @Override

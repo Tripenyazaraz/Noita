@@ -1,9 +1,11 @@
 import javax.swing.*;
+import java.awt.*;
 
 public class Display {
 
     public static int panelWidth = 700;
     public static int panelHeight = 700;
+    public static Image bgImage = new ImageIcon("textures/BG.jpg").getImage();
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Noita");
