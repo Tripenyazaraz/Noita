@@ -5,6 +5,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class GamePanel extends JPanel implements ActionListener {
 
@@ -18,6 +20,14 @@ public class GamePanel extends JPanel implements ActionListener {
         this.setVisible(true);                                              //показать игровую панель
         timerDraw.start();                                                  //запуск таймера
         //this.panel = panel;       //я не знаю зачем это но пока работает и без этого
+
+        //действие при клике мышкой
+        panel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                System.out.println("Пиксель был сгенерирован");
+            }
+        });
     }
 
     //прорисовка
