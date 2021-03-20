@@ -8,21 +8,24 @@ import java.awt.event.ActionListener;
 
 public class GamePanel extends JPanel implements ActionListener {
 
-    MainPanel panel;
-    Timer timerDraw = new Timer(20, this);
-    Image bgImage = new ImageIcon("textures/BG.jpg").getImage();
+    //MainPanel panel;      //я не знаю зачем это но пока работает и без этого
+    Timer timerDraw = new Timer(20, this);                                  //объяявление таймера
+    Image bgImage = new ImageIcon("textures/BG.jpg").getImage();                 //текстура бг
 
+    //конструктор
     public GamePanel(MainPanel panel) {
-        this.setSize(Display.panelGameWidth, Display.panelHeight);
-        this.setVisible(true);
-        timerDraw.start();
-        this.panel = panel;
+        this.setSize(Display.panelGameWidth, Display.panelHeight);          //задать размер игровой панели
+        this.setVisible(true);                                              //показать игровую панель
+        timerDraw.start();                                                  //запуск таймера
+        //this.panel = panel;       //я не знаю зачем это но пока работает и без этого
     }
 
+    //прорисовка
     public void paint(Graphics g) {
-        g.drawImage(bgImage, 0, 0, Display.panelGameWidth, Display.panelHeight, null);
+        g.drawImage(bgImage, 0, 0, Display.panelGameWidth, Display.panelHeight, null);          //рисует бг
     }
 
+    //это выполняется по таймеру
     @Override
     public void actionPerformed(ActionEvent e) {
         repaint();
