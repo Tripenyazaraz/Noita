@@ -1,6 +1,6 @@
 package Main;
 
-import Panels.MainPanel;
+import Panel.MainPanel;
 
 import javax.swing.*;
 

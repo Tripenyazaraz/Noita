@@ -1,8 +1,7 @@
-package Panels;
+package Panel;
 
 import Main.Display;
 import javax.swing.*;
-import java.awt.*;
 
 public class MainPanel extends JPanel {
     //конструктор

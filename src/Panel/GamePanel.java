@@ -1,4 +1,4 @@
-package Panels;
+package Panel;
 
 import Main.Display;
 import javax.swing.*;
@@ -12,7 +12,7 @@ public class GamePanel extends JPanel implements ActionListener {
 
     //MainPanel panel;      //я не знаю зачем это но пока работает и без этого
     Timer timerDraw = new Timer(20, this);                                  //объяявление таймера
-    Image bgImage = new ImageIcon("textures/BG.jpg").getImage();                 //текстура бг
+    Image bgImage = new ImageIcon("textures/texture_GamePanelBG.jpg").getImage();                 //текстура бг
 
     //конструктор
     public GamePanel(MainPanel panel) {
