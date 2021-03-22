@@ -1,4 +1,5 @@
 package Pixel.Powder;
 
-public class Sand {
+public class Sand extends BasePowder {
+
 }

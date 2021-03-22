@@ -1,4 +1,5 @@
 package Pixel.Gas;
 
-public class Steam {
+public class Steam extends BaseGas{
+
 }

@@ -1,4 +1,5 @@
 package Pixel.Liquid;
 
-public class Water {
+public class Water extends BaseLiquid {
+
 }
