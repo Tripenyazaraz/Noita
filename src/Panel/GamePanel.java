@@ -1,6 +1,8 @@
 package Panel;
 
 import Main.Display;
+import Pixel.BasePixel;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -25,19 +27,29 @@ public class GamePanel extends JPanel implements ActionListener {
         panel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
-                System.out.println("Пиксель был сгенерирован");
+                //реализация тестовой параши, заменить нахуй
+                generate(100);
             }
         });
     }
 
     //прорисовка
     public void paint(Graphics g) {
-        g.drawImage(bgImage, 0, 0, Display.panelGameWidth, Display.panelHeight, null);          //рисует бг
+        g.drawImage(bgImage, 0, 0, Display.panelGameWidth, Display.panelHeight, null);         //рисует бг
     }
 
     //это выполняется по таймеру
     @Override
     public void actionPerformed(ActionEvent e) {
         repaint();
+    }
+
+    //ниже идёт тестовая параша, заменить нахуй
+    public void generate(int count) {
+        BasePixel[] array = new BasePixel[100];
+        for(int i = 0; i < count; i++){
+            array[i] = new BasePixel();
+            System.out.println(array[i].setName(""+i));
+        }
     }
 }
