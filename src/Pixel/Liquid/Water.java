@@ -1,5 +1,10 @@
 package Pixel.Liquid;
 
-public class Water extends BaseLiquid {
+import Pixel.PixelInterface;
 
+public class Water extends BaseLiquid implements PixelInterface {
+
+    public void generate() {
+        System.out.println("водичка пролита");
+    }
 }

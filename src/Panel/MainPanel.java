@@ -4,6 +4,7 @@ import Main.Display;
 import javax.swing.*;
 
 public class MainPanel extends JPanel {
+
     //конструктор
     public MainPanel(JFrame frame) {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));                                  //определить расположение дочерних панелей

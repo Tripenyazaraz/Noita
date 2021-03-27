@@ -5,6 +5,7 @@ import Panel.MainPanel;
 import javax.swing.*;
 
 public class Display {
+
     //размеры панелей
     public static int panelHeight = 500;
     public static int panelGameWidth = 500;

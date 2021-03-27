@@ -1,6 +1,8 @@
 package Panel;
 
 import Main.Display;
+import Pixel.PixelInterface;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,6 +11,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class GamePanel extends JPanel implements ActionListener {
+
+    //тестовая ебала
+    PixelInterface[] array = new PixelInterface[100];
+
 
     //MainPanel panel;      //я не знаю зачем это но пока работает и без этого
     Timer timerDraw = new Timer(20, this);                                  //объяявление таймера
@@ -25,7 +31,7 @@ public class GamePanel extends JPanel implements ActionListener {
         panel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
-                System.out.println("Пиксель был сгенерирован");
+                generate();
             }
         });
     }
@@ -39,5 +45,16 @@ public class GamePanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         repaint();
+    }
+
+    //тестовая ебала
+    public void generate() {
+        for(int i = 0; i < 10; i++){
+            if (i % 2 == 0)
+                array[i] = new Pixel.Gas.Steam();
+            else
+                array[i] = new Pixel.Liquid.Water();
+            array[i].generate();
+        }
     }
 }
