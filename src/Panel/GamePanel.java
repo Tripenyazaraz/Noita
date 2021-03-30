@@ -28,7 +28,7 @@ public class GamePanel extends JPanel implements ActionListener {
         //this.panel = panel;       //я не знаю зачем это но пока работает и без этого
 
         //действие при клике мышкой
-        panel.addMouseListener(new MouseAdapter() {
+        this.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
                 generate();
