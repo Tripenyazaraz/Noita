@@ -7,6 +7,11 @@ public class MainPanel extends JPanel {
 
     //конструктор
     public MainPanel(JFrame frame) {
+        createGUI();
+    }
+
+    //создание интерфейса
+    public void createGUI() {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));                                  //определить расположение дочерних панелей
         this.setSize(Display.panelGameWidth + Display.panelMenuWidth, Display.panelHeight);     //размер главной панели
         this.setVisible(true);                                                                        //появление главной панели

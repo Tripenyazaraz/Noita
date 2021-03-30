@@ -12,6 +12,10 @@ public class Display {
     public static int panelMenuWidth = 300;
 
     public static void main(String[] args) {
+        createGUI();
+    }
+
+    public static void createGUI() {
         //объявление главной рамки
         JFrame mainFrame = new JFrame("Noita");                       //название в рамке
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);          //операция закрытия окны при нажатии на крестик

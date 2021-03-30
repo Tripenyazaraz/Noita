@@ -12,14 +12,19 @@ import java.awt.event.MouseEvent;
 
 public class GamePanel extends JPanel implements ActionListener {
 
+    //ПЕРЕМЕННЫЕ
+    Timer timerDraw = new Timer(20, this);                                      //объяявление таймера
+    Image bgImage = new ImageIcon("textures/texture_GamePanelBG.jpg").getImage();    //текстура бг
     //тестовая ебала
     PixelInterface[] array = new PixelInterface[100];
 
-    Timer timerDraw = new Timer(20, this);                                      //объяявление таймера
-    Image bgImage = new ImageIcon("textures/texture_GamePanelBG.jpg").getImage();    //текстура бг
-
     //конструктор
     public GamePanel(MainPanel panel) {
+        createGUI();
+    }
+
+    //создание интерфейса
+    public void createGUI() {
         this.setSize(Display.panelGameWidth, Display.panelHeight);          //задать размер игровой панели
         this.setVisible(true);                                              //показать игровую панель
         timerDraw.start();                                                  //запуск таймера
