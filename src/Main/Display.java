@@ -1,33 +1,29 @@
 package Main;
 
+import Panel.GamePanel;
 import Panel.MainPanel;
 
 import javax.swing.*;
 
 public class Display {
 
-    //размеры панелей
-    public static int panelHeight = 500;
-    public static int panelGameWidth = 500;
-    public static int panelMenuWidth = 300;
-
     public static void main(String[] args) {
-        createGUI();
+        createMainFrame(true, true, MainPanel.WIDTH, MainPanel.HEIGHT);
     }
 
-    public static void createGUI() {
+    public static void createMainFrame(Boolean isResizable, Boolean isVisible, int mainWidth, int mainHeight) {
         //объявление главной рамки
-        JFrame mainFrame = new JFrame("Noita");                       //название в рамке
-        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);          //операция закрытия окны при нажатии на крестик
-        mainFrame.setResizable(false);                                     //запретить изменение размеров окна
+        JFrame MainFrame = new JFrame("Noita");                       //название в рамке
+        MainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);          //операция закрытия окны при нажатии на крестик
+        MainFrame.setResizable(isResizable);                                     //запретить изменение размеров окна
 
         //размеры рамки
-        mainFrame.setSize(panelGameWidth + panelMenuWidth, panelHeight);
+        MainFrame.setSize(mainWidth, mainHeight);
 
         //появление главной рамки
-        mainFrame.setVisible(true);
+        MainFrame.setVisible(isVisible);
 
         //добавление общей панели
-        mainFrame.add(new MainPanel(mainFrame));
+        MainFrame.add(new MainPanel());
     }
 }
