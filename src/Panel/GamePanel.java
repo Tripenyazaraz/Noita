@@ -13,8 +13,8 @@ import java.awt.event.MouseEvent;
 public class GamePanel extends JPanel implements ActionListener {
 
     //КОНСТАНТЫ
-    public static int WIDTH = 500;
-    public static int HEIGHT = MainPanel.HEIGHT;
+    public final static int WIDTH = 500;
+    public final static int HEIGHT = MainPanel.HEIGHT;
 
     //ПЕРЕМЕННЫЕ
     Timer timerDraw = new Timer(20, this);                                      //объяявление таймера

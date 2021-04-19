@@ -5,8 +5,8 @@ import javax.swing.*;
 public class MenuPanel extends JPanel {
 
     //КОНСТАНТЫ
-    public static int WIDTH = 300;
-    public static int HEIGHT = MainPanel.HEIGHT;
+    public final static int WIDTH = 300;
+    public final static int HEIGHT = MainPanel.HEIGHT;
 
     //конструктор
     public MenuPanel() {

@@ -6,8 +6,8 @@ import javax.swing.*;
 public class MainPanel extends JPanel {
 
     //константы
-    public static int HEIGHT = 500;
-    public static int WIDTH = GamePanel.WIDTH + MenuPanel.WIDTH;
+    public final static int HEIGHT = 500;
+    public final static int WIDTH = GamePanel.WIDTH + MenuPanel.WIDTH;
 
     //конструктор
     public MainPanel() {
