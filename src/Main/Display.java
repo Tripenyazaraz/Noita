@@ -8,7 +8,7 @@ import javax.swing.*;
 public class Display {
 
     public static void main(String[] args) {
-        createMainFrame(true, true, MainPanel.WIDTH, MainPanel.HEIGHT);
+        createMainFrame(false, true, MainPanel.WIDTH, MainPanel.HEIGHT);
     }
 
     public static void createMainFrame(Boolean isResizable, Boolean isVisible, int mainWidth, int mainHeight) {

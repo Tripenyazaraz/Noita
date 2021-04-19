@@ -1,9 +1,10 @@
 package Panel;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MenuPanel extends JPanel {
-
     //КОНСТАНТЫ
     public final static int WIDTH = 300;
     public final static int HEIGHT = MainPanel.HEIGHT;
@@ -19,3 +20,4 @@ public class MenuPanel extends JPanel {
         this.setVisible(isVisible);              //показать игровую панель
     }
 }
+

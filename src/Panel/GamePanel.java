@@ -17,11 +17,13 @@ public class GamePanel extends JPanel implements ActionListener {
     public final static int HEIGHT = MainPanel.HEIGHT;
 
     //ПЕРЕМЕННЫЕ
-    Timer timerDraw = new Timer(20, this);                                      //объяявление таймера
-    Image bgImage = new ImageIcon("textures/texture_GamePanelBG.jpg").getImage();    //текстура бг
+    Timer timerDraw = new Timer(24, this);    //объяявление таймера
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        repaint();
+    }
 
-    //тестовая ебала
-    PixelInterface[] array = new PixelInterface[100];
+    Image bgImage = new ImageIcon("Textures\\texture_GamePanelBG.jpg").getImage();    //текстура бг
 
     //конструктор
     public GamePanel() {
@@ -38,7 +40,7 @@ public class GamePanel extends JPanel implements ActionListener {
         this.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
-                generate();
+                generatePixelOnClick();
             }
         });
     }
@@ -48,14 +50,11 @@ public class GamePanel extends JPanel implements ActionListener {
         g.drawImage(bgImage, 0, 0, WIDTH, HEIGHT, null);          //рисует бг
     }
 
-    //это выполняется по таймеру
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        repaint();
-    }
+    //тестовая ебала
+    PixelInterface[] array = new PixelInterface[100];
 
     //тестовая ебала
-    public void generate() {
+    public void generatePixelOnClick() {
         for(int i = 0; i < 10; i++){
             if (i % 2 == 0)
                 array[i] = new Pixel.Gas.Steam();
