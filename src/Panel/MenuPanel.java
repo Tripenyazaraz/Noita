@@ -1,9 +1,12 @@
 package Panel;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 
 public class MenuPanel extends JPanel {
     //КОНСТАНТЫ
@@ -20,7 +23,13 @@ public class MenuPanel extends JPanel {
         this.setSize(width, height);
         this.setVisible(isVisible);
         this.setLocation(GamePanel.GAME_WIDTH, 0);
-        //цвет
         this.setBackground(Color.BLUE);
+
+        JButton testButton = new JButton("я кнопшка");
+        testButton.setSize(150,50);
+        testButton.setLocation(50,50);
+//        testButton.setIcon(new ImageIcon("Textures/texture_GamePanelBG.jpg"));
+        testButton.setVisible(true);
+        this.add(testButton);
     }
 }
