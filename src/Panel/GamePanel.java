@@ -14,15 +14,14 @@ import java.io.File;
 
 public class GamePanel extends JPanel implements ActionListener {
     //таймер
-    Timer timer = new Timer(20, this);
+    Timer timer = new Timer(20,  this);
 
     //КОНСТАНТЫ
     public static final int GAME_WIDTH = 500;
     public static final int GAME_HEIGHT = MainPanel.MAIN_HEIGHT;
     //переменные
     private Image img1 = new ImageIcon("Textures/Pixel/Powder/texture_Sand.jpg").getImage();
-    private Image img2 = new ImageIcon("Textures/Pixel/Powder/texture_Sand.jpg").getImage();
-    private Image img3 = new ImageIcon("Textures/Pixel/Powder/texture_Sand.jpg").getImage();
+    private Image imgBG = new ImageIcon("Textures/GamePanelBG.jpg").getImage();
 
     //конструктор
     public GamePanel() {
@@ -34,12 +33,19 @@ public class GamePanel extends JPanel implements ActionListener {
         //параметры
         this.setSize(width, height);
         this.setVisible(isVisible);
-        this.setBackground(Color.RED);
+        this.setLocation(0 , 0);
+
+        JButton button = new JButton("я тоже");
+        button.setSize(150,50);
+        button.setLocation(50,50);
+        button.setVisible(true);
+        this.add(button);
     }
 
     public void paint(Graphics g) {
-        this.setBackground(Color.RED);
+        g.drawImage(imgBG, 0, 0, this.getWidth(), this.getHeight(), null);
         g.drawImage(img1, 0, 0, 10, 10, null);
+        super.paintComponents(g);
     }
 
     @Override

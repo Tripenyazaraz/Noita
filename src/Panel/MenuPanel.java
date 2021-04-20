@@ -28,7 +28,6 @@ public class MenuPanel extends JPanel {
         JButton testButton = new JButton("я кнопшка");
         testButton.setSize(150,50);
         testButton.setLocation(50,50);
-//        testButton.setIcon(new ImageIcon("Textures/texture_GamePanelBG.jpg"));
         testButton.setVisible(true);
         this.add(testButton);
     }
