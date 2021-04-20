@@ -1,23 +1,26 @@
 package Panel;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MenuPanel extends JPanel {
     //КОНСТАНТЫ
-    public final static int WIDTH = 300;
-    public final static int HEIGHT = MainPanel.HEIGHT;
+    public static final int MENU_WIDTH = 300;
+    public static final int MENU_HEIGHT = MainPanel.MAIN_HEIGHT;
 
     //конструктор
     public MenuPanel() {
-        createGUI(true, WIDTH, HEIGHT);
+        createGUI(true, MENU_WIDTH, MENU_HEIGHT);
     }
 
-    //создание интерфейса
-    public void createGUI(Boolean isVisible, int gameWidth, int gameHeight) {
-        this.setSize(gameWidth, gameHeight);     //задать размер игровой панели
-        this.setVisible(isVisible);              //показать игровую панель
+    private void createGUI(Boolean isVisible, int width, int height) {
+        //параметры
+        this.setSize(width, height);
+        this.setVisible(isVisible);
+        this.setLocation(GamePanel.GAME_WIDTH, 0);
+        //цвет
+        this.setBackground(Color.BLUE);
     }
 }
-

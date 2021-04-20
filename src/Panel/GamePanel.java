@@ -3,64 +3,31 @@ package Panel;
 import Main.Display;
 import Pixel.PixelInterface;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
 
-public class GamePanel extends JPanel implements ActionListener {
-
+public class GamePanel extends JPanel {
     //КОНСТАНТЫ
-    public final static int WIDTH = 500;
-    public final static int HEIGHT = MainPanel.HEIGHT;
-
-    //ПЕРЕМЕННЫЕ
-    Timer timerDraw = new Timer(24, this);    //объяявление таймера
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        repaint();
-    }
-
-    Image bgImage = new ImageIcon("Textures\\texture_GamePanelBG.jpg").getImage();    //текстура бг
+    public static final int GAME_WIDTH = 500;
+    public static final int GAME_HEIGHT = MainPanel.MAIN_HEIGHT;
 
     //конструктор
     public GamePanel() {
-        createGUI(true, WIDTH, HEIGHT);
+        createGUI(true, GAME_WIDTH, GAME_HEIGHT);
     }
 
-    //создание интерфейса
-    public void createGUI(Boolean isVisible, int gameWidth, int gameHeight) {
-        this.setSize(gameWidth, gameHeight);     //задать размер игровой панели
-        this.setVisible(isVisible);              //показать игровую панель
-        timerDraw.start();                       //запуск таймера
-
-        //действие при клике мышкой
-        this.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                generatePixelOnClick();
-            }
-        });
-    }
-
-    //прорисовка
-    public void paint(Graphics g) {
-        g.drawImage(bgImage, 0, 0, WIDTH, HEIGHT, null);          //рисует бг
-    }
-
-    //тестовая ебала
-    PixelInterface[] array = new PixelInterface[100];
-
-    //тестовая ебала
-    public void generatePixelOnClick() {
-        for(int i = 0; i < 10; i++){
-            if (i % 2 == 0)
-                array[i] = new Pixel.Gas.Steam();
-            else
-                array[i] = new Pixel.Liquid.Water();
-            array[i].generate();
-        }
+    private void createGUI(Boolean isVisible, int width, int height) {
+        //параметры
+        this.setSize(width, height);
+        this.setVisible(isVisible);
+        this.setAlignmentX(Component.LEFT_ALIGNMENT);
+        //цвет
+        this.setBackground(Color.RED);
     }
 }

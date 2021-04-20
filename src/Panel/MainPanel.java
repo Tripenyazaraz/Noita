@@ -2,24 +2,27 @@ package Panel;
 
 import Main.Display;
 import javax.swing.*;
+import java.awt.*;
 
 public class MainPanel extends JPanel {
-
     //КОНСТАНТЫ
-    public final static int HEIGHT = 500;
-    public final static int WIDTH = GamePanel.WIDTH + MenuPanel.WIDTH;
+    public static final int MAIN_WIDTH = GamePanel.GAME_WIDTH + MenuPanel.MENU_WIDTH;
+    public static final int MAIN_HEIGHT = 500;
 
     //конструктор
     public MainPanel() {
-        createGUI(true, WIDTH, HEIGHT);
+        createGUI(true, MAIN_WIDTH, MAIN_HEIGHT);
     }
 
     //создание интерфейса
-    public void createGUI(Boolean isVisible, int mainWidth, int mainHeight) {
-        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));     //определить расположение дочерних панелей
-        this.setSize(mainWidth, mainHeight);                             //размер главной панели
-        this.setVisible(isVisible);                                      //появление главной панели
-        this.add(new GamePanel());                                       //добавление игровой панели
-        this.add(new MenuPanel());                                       //добавление панели меню
+    private void createGUI(Boolean isVisible, int width, int height) {
+        //параметры
+        this.setSize(width, height);
+        this.setVisible(isVisible);
+        //this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+        this.setLayout(null);
+        //добавление дочерних панелей
+        this.add(new MenuPanel());
+        this.add(new GamePanel());
     }
 }
