@@ -19,7 +19,7 @@ public class MainPanel extends JPanel {
         //параметры
         this.setSize(width, height);
         this.setVisible(isVisible);
-        //this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+        //магия
         this.setLayout(null);
         //добавление дочерних панелей
         this.add(new MenuPanel());

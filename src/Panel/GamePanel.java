@@ -26,7 +26,6 @@ public class GamePanel extends JPanel {
         //параметры
         this.setSize(width, height);
         this.setVisible(isVisible);
-        this.setAlignmentX(Component.LEFT_ALIGNMENT);
         //цвет
         this.setBackground(Color.RED);
     }
