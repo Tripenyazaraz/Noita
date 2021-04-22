@@ -1,7 +1,4 @@
 import Pixel.*;
-import Pixel.Gas.Steam;
-import Pixel.Liquid.Water;
-import Pixel.Powder.Sand;
 
 public class Engine {
     //переменные

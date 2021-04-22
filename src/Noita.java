@@ -3,7 +3,7 @@ import Pixel.Powder.Sand;
 
 public class Noita {
     public static void main(String[] args) {
-        Engine engine = new Engine();
-        engine.generatePixel(new Water());
+        Engine mainEngine = new Engine();
+        mainEngine.generatePixel(new Water());
     }
 }
