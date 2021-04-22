@@ -18,7 +18,7 @@ public class Engine {
     }
 
     //создание пикселя
-    public void generatePixel(int pixelType) {
-        field[1] = new Sand();
+    public void generatePixel(BasePixel blanc) {
+        field[1] = blanc;
     }
 }
