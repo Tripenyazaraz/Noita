@@ -18,12 +18,14 @@ public class Engine {
     }
 
     //создание пикселя
-    public void generatePixel(String pixelName, int i) {
+    public void generatePixel(String pixelName, int x, int y, int i) {
         switch (pixelName) {
-            case "Steam" -> field[i] = new Steam();
-            case "Water" -> field[i] = new Water();
-            case "Sand" -> field[i] = new Sand();
+            case "Steam" -> field[i] = new Steam(x, y);
+            case "Water" -> field[i] = new Water(x, y);
+            case "Sand" -> field[i] = new Sand(x, y);
             default -> System.out.println("Нет пикселя с таким именем");
         }
+        System.out.println(field[i].x);
+        System.out.println(field[i].y);
     }
 }

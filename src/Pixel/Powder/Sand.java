@@ -1,7 +1,7 @@
 package Pixel.Powder;
 
 public class Sand extends BasePowder {
-    public Sand() {
-        System.out.println("песок");
+    public Sand(int x, int y) {
+        super(x, y);
     }
 }

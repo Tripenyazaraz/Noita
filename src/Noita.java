@@ -12,6 +12,6 @@ public class Noita {
         Engine mainEngine = new Engine();  //создание основного движка
 
         currentPixelName = "Steam";                         //выбор пикселя (это должно быть в кнопке)
-        mainEngine.generatePixel(currentPixelName, 1);   //создание пикселя (это должно быть при клике на поле)
+        mainEngine.generatePixel(currentPixelName, 10, 10, 1);   //создание пикселя (это должно быть при клике на поле)
     }
 }

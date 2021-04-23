@@ -1,7 +1,7 @@
 package Pixel.Liquid;
 
 public class Water extends BaseLiquid {
-    public Water() {
-        System.out.println("вода");
+    public Water(int x, int y) {
+        super(x, y);
     }
 }
