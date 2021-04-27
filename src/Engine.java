@@ -25,7 +25,7 @@ public class Engine {
             case "Sand" -> field[i] = new Sand(x, y);
             default -> System.out.println("Нет пикселя с таким именем");
         }
-        System.out.println(field[i].x);
-        System.out.println(field[i].y);
+        System.out.println(field[i].getX());
+        System.out.println(field[i].getY());
     }
 }
