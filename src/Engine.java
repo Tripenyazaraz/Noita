@@ -1,31 +1,30 @@
-import Pixel.*;
-import Pixel.Gas.Steam;
-import Pixel.Liquid.Water;
-import Pixel.Powder.Sand;
-
 public class Engine {
-    //переменные
-    BasePixel[] field = new BasePixel[100];
+    public static int height = 3;
+    public static int width = 3;
+    public static ParticleInterface[][] field = new ParticleInterface[width][height];
 
-    //конструктор
-    public Engine() {
-        System.out.println("конструктор");
-    }
-
-    //один ход
-    public void updateField() {
-        System.out.println("ход");
-    }
-
-    //создание пикселя
-    public void generatePixel(String pixelName, int x, int y, int i) {
-        switch (pixelName) {
-            case "Steam" -> field[i] = new Steam(x, y);
-            case "Water" -> field[i] = new Water(x, y);
-            case "Sand" -> field[i] = new Sand(x, y);
-            default -> System.out.println("Нет пикселя с таким именем");
+    //шаг физики
+    public void step() {
+        for(int y = height-1; y >= 0; y--) {
+            for(int x = 0; x < width; x++) {
+                if (field[x][y] != null) {
+                    field[x][y].update(x,y);
+                }
+            }
         }
-        System.out.println(field[i].getX());
-        System.out.println(field[i].getY());
+    }
+
+    //прорисовка
+    public void draw() {
+        for(int y = 0; y < height; y++) {
+            System.out.println("");
+            for(int x = 0; x < width; x++) {
+                if (field[x][y] == null) {
+                    System.out.print("0 ");
+                } else {
+                    System.out.print("K ");
+                }
+            }
+        }
     }
 }

@@ -1,21 +1,25 @@
-import Pixel.BasePixel;
-import Pixel.Gas.Steam;
-import Pixel.Liquid.Water;
-import Pixel.Powder.Sand;
+import java.io.IOException;
 
 public class Noita {
-    //переменные
-    public static String currentPixelName = "none";  //текущий выбранный пиксель
-    public static BasePixel currentPixel;
+    public static void main(String[] args) throws IOException {
+        Engine engine = new Engine();
+        Engine.field[1][0] = new Sand(1,0);
 
-    public static void main(String[] args) {
-        Engine mainEngine = new Engine();  //создание основного движка
 
-        currentPixelName = "Steam";  //выбор пикселя (это должно быть в кнопке)
-        mainEngine.generatePixel(currentPixelName, 10, 10, 1);   //создание пикселя (это должно быть при клике на поле)
-        currentPixelName = "Water";
-        mainEngine.generatePixel(currentPixelName, 11, 11, 1);
-        currentPixelName = "Sand";
-        mainEngine.generatePixel(currentPixelName, 12, 12, 1);
+        /* ввод от пользователя
+            a - шаг
+            b - отрисовка
+            с - выход
+        */
+        char command = 0;
+        while (command != 'c') {
+            command = (char)System.in.read();
+            if (command == 'a') {
+                engine.step();
+            }
+            if (command == 'b') {
+                engine.draw();
+            }
+        }
     }
 }
