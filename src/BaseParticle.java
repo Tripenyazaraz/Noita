@@ -15,4 +15,11 @@ public class BaseParticle {
     public int getY() {
         return y;
     }
+
+    public void moveTo(int x, int y) {
+        Engine.field[x][y] = Engine.field[this.getX()][this.getY()];
+        Engine.field[this.getX()][this.getY()] = null;
+        this.setX(x);
+        this.setY(y);
+    }
 }

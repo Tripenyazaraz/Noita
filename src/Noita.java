@@ -4,6 +4,8 @@ public class Noita {
     public static void main(String[] args) throws IOException {
         Engine engine = new Engine();
         Engine.field[1][0] = new Sand(1,0);
+        Engine.field[1][1] = new Sand(1,1);
+        Engine.field[1][2] = new Sand(1,2);
 
 
         /* ввод от пользователя
