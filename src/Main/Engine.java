@@ -1,3 +1,6 @@
+package Main;
+import Particle.*;
+
 public class Engine {
     public static int height = 7;
     public static int width = 7;
@@ -34,11 +37,11 @@ public class Engine {
             case ("water") -> Engine.field[x][y] = new Water(x, y);
             case ("steam") -> Engine.field[x][y] = new Steam(x, y);
             /*
-            case ("acid") -> Engine.field[x][y] = new Acid(x, y);
-            case ("oil") -> Engine.field[x][y] = new Oil(x, y);
-            case ("wood") -> Engine.field[x][y] = new Wood(x, y);
-            case ("stone") -> Engine.field[x][y] = new Stone(x, y);
-            case ("fire") -> Engine.field[x][y] = new Fire(x, y);
+            case ("acid") -> Main.Engine.field[x][y] = new Acid(x, y);
+            case ("oil") -> Main.Engine.field[x][y] = new Oil(x, y);
+            case ("wood") -> Main.Engine.field[x][y] = new Wood(x, y);
+            case ("stone") -> Main.Engine.field[x][y] = new Stone(x, y);
+            case ("fire") -> Main.Engine.field[x][y] = new Fire(x, y);
             */
         }
     }

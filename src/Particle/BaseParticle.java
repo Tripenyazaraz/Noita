@@ -1,3 +1,7 @@
+package Particle;
+
+import Main.Engine;
+
 public class BaseParticle {
     private int x;
     private int y;

@@ -1,3 +1,5 @@
+package Particle;
+
 public class Water extends BaseParticle implements ParticleInterface {
     //конструктор
     public Water(int x, int y) {

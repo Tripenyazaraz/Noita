@@ -1,3 +1,5 @@
+package Particle;
+
 public class Steam extends BaseParticle implements ParticleInterface {
     //конструктор
     public Steam(int x, int y) {

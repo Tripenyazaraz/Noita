@@ -1,3 +1,7 @@
+package Particle;
+
+import Main.Engine;
+
 public class Sand extends BaseParticle implements ParticleInterface {
     //конструктор
     public Sand(int x, int y) {
