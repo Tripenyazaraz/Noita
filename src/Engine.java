@@ -1,6 +1,6 @@
 public class Engine {
-    public static int height = 3;
-    public static int width = 3;
+    public static int height = 7;
+    public static int width = 7;
     public static ParticleInterface[][] field = new ParticleInterface[width][height];
 
     //шаг физики
@@ -25,6 +25,21 @@ public class Engine {
                     System.out.print("K ");
                 }
             }
+        }
+    }
+
+    public void createParticle(String particleName, int x, int y) {
+        switch (particleName) {
+            case ("sand") -> Engine.field[x][y] = new Sand(x, y);
+            case ("water") -> Engine.field[x][y] = new Water(x, y);
+            case ("steam") -> Engine.field[x][y] = new Steam(x, y);
+            /*
+            case ("acid") -> Engine.field[x][y] = new Acid(x, y);
+            case ("oil") -> Engine.field[x][y] = new Oil(x, y);
+            case ("wood") -> Engine.field[x][y] = new Wood(x, y);
+            case ("stone") -> Engine.field[x][y] = new Stone(x, y);
+            case ("fire") -> Engine.field[x][y] = new Fire(x, y);
+            */
         }
     }
 }
