@@ -1,6 +1,6 @@
 package Particle;
 
-import Main.Engine;
+import Main.*;
 
 public class BaseParticle {
     private int x;
@@ -25,5 +25,11 @@ public class BaseParticle {
         Engine.field[this.getX()][this.getY()] = null;
         this.setX(x);
         this.setY(y);
+    }
+
+    public Boolean isEmpty(int x, int y) {
+        if ((x <= Engine.width-1) & (y <= Engine.height-1) & (x >= 0) & (y >= 0)) {
+            return (Engine.field[x][y] == null);
+        } else return false;
     }
 }

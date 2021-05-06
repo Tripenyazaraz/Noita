@@ -33,15 +33,15 @@ public class Engine {
 
     public void createParticle(String particleName, int x, int y) {
         switch (particleName) {
-            case ("sand") -> Engine.field[x][y] = new Sand(x, y);
+            case ("sand")  -> Engine.field[x][y] = new Sand( x, y);
             case ("water") -> Engine.field[x][y] = new Water(x, y);
             case ("steam") -> Engine.field[x][y] = new Steam(x, y);
             /*
-            case ("acid") -> Main.Engine.field[x][y] = new Acid(x, y);
-            case ("oil") -> Main.Engine.field[x][y] = new Oil(x, y);
-            case ("wood") -> Main.Engine.field[x][y] = new Wood(x, y);
-            case ("stone") -> Main.Engine.field[x][y] = new Stone(x, y);
-            case ("fire") -> Main.Engine.field[x][y] = new Fire(x, y);
+            case ("acid")  -> Engine.field[x][y] = new Acid( x, y);
+            case ("oil")   -> Engine.field[x][y] = new Oil(  x, y);
+            case ("wood")  -> Engine.field[x][y] = new Wood( x, y);
+            case ("stone") -> Engine.field[x][y] = new Stone(x, y);
+            case ("fire")  -> Engine.field[x][y] = new Fire( x, y);
             */
         }
     }

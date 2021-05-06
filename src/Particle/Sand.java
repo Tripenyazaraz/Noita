@@ -1,6 +1,6 @@
 package Particle;
 
-import Main.Engine;
+import Main.*;
 
 public class Sand extends BaseParticle implements ParticleInterface {
     //конструктор
@@ -11,37 +11,12 @@ public class Sand extends BaseParticle implements ParticleInterface {
 
     @Override
     public void update(int x, int y) {
-        //если частица не на нижней границе то
-        if (y != Engine.height-1) {
-            //если снизу от частицы пусто то
-            if (Engine.field[x][y+1] == null) {
-                //переместить частицу вниз
-                Engine.field[x][y].moveTo(x,y+1);
-            }
-            //иначе если частица не у левого края то
-            else if (x != 0) {
-                //если слева снизу от частицы пусто то
-                if (Engine.field[x-1][y+1] == null) {
-                    //переместить частицу влева вниз
-                    Engine.field[x][y].moveTo(x-1,y+1);
-                }
-                //иначе если частица не у правого края то
-                else if (x != Engine.width-1) {
-                    //если справа снизу от частицы пусто то
-                    if (Engine.field[x + 1][y + 1] == null) {
-                        //переместить частицу справа вниз
-                        Engine.field[x][y].moveTo(x+1,y+1);
-                    }
-                }
-            }
-            //иначе если частица не у правого края то
-            else if (x != Engine.width-1) {
-                //если справа снизу от частицы пусто то
-                if (Engine.field[x + 1][y + 1] == null) {
-                    //переместить частицу справа вниз
-                    Engine.field[x][y].moveTo(x+1,y+1);
-                }
-            }
-        }
+        Boolean down      = isEmpty(   x,   y+1);
+        Boolean downLeft  = isEmpty(x-1, y+1);
+        Boolean downRight = isEmpty(x+1, y+1);
+
+             if (down)      Engine.field[x][y].moveTo(   x,   y+1);
+        else if (downLeft)  Engine.field[x][y].moveTo(x-1, y+1);
+        else if (downRight) Engine.field[x][y].moveTo(x+1, y+1);
     }
 }
