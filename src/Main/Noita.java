@@ -23,14 +23,11 @@ public class Noita {
 
 
         //ВЗАИМОДЕЙСТВИЕ С ПОЛЬЗОВАТЕЛЕМ
-        while (true) {
+        currentParticleName = "";
+        while (!(currentParticleName.toLowerCase().equals("exit"))) {
             System.out.print("Введите название пикселя или exit для выхода -> ");
             currentParticleName = console.nextLine();
-
-            if (currentParticleName.toLowerCase().equals("exit")) {
-                break;
-            }
-            else if (particleSet.contains(currentParticleName.toLowerCase())) {
+            if (particleSet.contains(currentParticleName.toLowerCase())) {
                 //шаг физики
                 engine.step();
                 //ввод X
@@ -48,7 +45,7 @@ public class Noita {
                 System.out.println();
                 //магия ебаного сканнера
                 console.nextLine();
-            } else {
+            } else if (!(currentParticleName.toLowerCase().equals("exit"))) {
                 System.out.println("Неправильное название частицы!");
             }
         }
