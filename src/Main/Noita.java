@@ -2,7 +2,6 @@ package Main;
 
 import java.io.IOException;
 import java.util.HashSet;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class Noita {
@@ -24,7 +23,7 @@ public class Noita {
 
         //ВЗАИМОДЕЙСТВИЕ С ПОЛЬЗОВАТЕЛЕМ
         currentParticleName = "";
-        while (!(currentParticleName.toLowerCase().equals("exit"))) {
+        while (!(currentParticleName.equalsIgnoreCase("/exit"))) {
             System.out.print("Введите название пикселя или exit для выхода -> ");
             currentParticleName = console.nextLine();
             if (particleSet.contains(currentParticleName.toLowerCase())) {
@@ -37,7 +36,7 @@ public class Noita {
                 System.out.print("Введите Y координату -> ");
                 currentParticleY = console.nextInt();
                 //создание частицы
-                engine.createParticle(currentParticleName.toLowerCase(Locale.ROOT), currentParticleX, currentParticleY);
+                engine.createParticle(currentParticleName.toLowerCase(), currentParticleX, currentParticleY);
                 //прорисовка
                 engine.draw();
                 //отступы
@@ -45,7 +44,7 @@ public class Noita {
                 System.out.println();
                 //магия ебаного сканнера
                 console.nextLine();
-            } else if (!(currentParticleName.toLowerCase().equals("exit"))) {
+            } else if (!(currentParticleName.equalsIgnoreCase("exit"))) {
                 System.out.println("Неправильное название частицы!");
             }
         }
