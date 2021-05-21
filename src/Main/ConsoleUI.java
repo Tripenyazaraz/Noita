@@ -2,6 +2,7 @@ package Main;
 
 import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 public class ConsoleUI {
     public static void init() {
@@ -14,18 +15,21 @@ public class ConsoleUI {
         int currentX;
         int currentY;
         //множество названий частиц
-        HashSet particleSet = new HashSet();
+        Set<String> particleSet = new HashSet<>();
                 particleSet.add("sand");
                 particleSet.add("water");
                 particleSet.add("steam");
                 particleSet.add("stone");
-        HashSet commandSet = new HashSet();
+        //множество комманд
+        Set<String> commandSet = new HashSet<>();
                 commandSet.add("/exit");
                 commandSet.add("/cls");
 
         //ВЗАИМОДЕЙСТВИЕ С ПОЛЬЗОВАТЕЛЕМ
         while (!(userInput.equals("/exit"))) {
-            System.out.print("Введите название пикселя или \"/exit\" для выхода -> ");
+            System.out.println("\"/exit\" для выхода");
+            System.out.println("\"/cls\" для очистки поля");
+            System.out.print("Введите название пикселя -> ");
             userInput = console.nextLine();       //ввод пользователя
             userInput = userInput.toLowerCase();
 
