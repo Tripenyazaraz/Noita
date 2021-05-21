@@ -17,16 +17,22 @@ public class Engine {
         }
     }
 
-    //прорисовка
+    //прорисовка (ТОЛЬКО ДЛЯ КОНСОЛЬНОГО ИНТЕРФЕЙСА)
     public void draw() {
         for(int y = 0; y < height; y++) {
             System.out.println();
-            for(int x = 0; x < width; x++) {
-                if (field[x][y] == null) {
-                    System.out.print("0 ");
-                } else {
-                    System.out.print("K ");
-                }
+            for (int x = 0; x < width; x++) {
+                if (field[x][y] == null) { System.out.print("0 "); }
+                else if (field[x][y] instanceof Sand)  { System.out.print("S "); }
+                else if (field[x][y] instanceof Water) { System.out.print("W "); }
+                else if (field[x][y] instanceof Steam) { System.out.print("G "); }
+                else if (field[x][y] instanceof Stone) { System.out.print("R "); }
+                /*
+                else if (field[x][y] instanceof Acid) { System.out.print("A "); }
+                else if (field[x][y] instanceof Oil)  { System.out.print("O "); }
+                else if (field[x][y] instanceof Wood) { System.out.print("D "); }
+                else if (field[x][y] instanceof Fire) { System.out.print("F "); }
+                */
             }
         }
         //отступы
