@@ -40,7 +40,7 @@ public class JavaFX_UI extends Application{
 
     //возвращает image объект.
     public Image getImage(String path) {
-        InputStream imageStream = this.getClass().getResourceAsStream("/images/" + path);
+        InputStream imageStream = this.getClass().getResourceAsStream("/Images/" + path);
         return new Image(imageStream);
     }
 }
