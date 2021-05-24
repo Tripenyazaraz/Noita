@@ -1,7 +1,6 @@
 package Main;
 
 import Main.Interface.DrawTimerTask;
-import javafx.event.ActionEvent;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -23,7 +22,9 @@ public class Noita_UI extends Application{
     public static final int MENU_PANEL_WIDTH = 100;
     public static final int HEIGHT = 800;
     public static Engine engine = new Engine();
-    String currentParticleName = "erase";
+    String userInput = "erase";
+    int W = 7;
+    int H = 7;
 
     public static void main(String[] args) {
         Application.launch(args);
@@ -44,18 +45,17 @@ public class Noita_UI extends Application{
         Canvas canvas = new Canvas(GAME_PANEL_WIDTH, HEIGHT);
         GraphicsContext gc = canvas.getGraphicsContext2D();
         //действие при клике
-        canvas.addEventHandler(MouseEvent.MOUSE_CLICKED,
-                e -> {
-                    if ((toInt(e.getX()) >= 0) & (toInt(e.getY()) >= 0) &
-                        (toInt(e.getX()) <= GAME_PANEL_WIDTH-1) & (toInt(e.getY()) <= HEIGHT-1))
-                    engine.createParticle(currentParticleName,toInt(e.getX()),toInt(e.getY()));
-                });
-        canvas.addEventHandler(MouseEvent.MOUSE_DRAGGED,
-                e -> {
-                    if ((toInt(e.getX()) >= 0) & (toInt(e.getY()) >= 0) &
-                        (toInt(e.getX()) <= GAME_PANEL_WIDTH-1) & (toInt(e.getY()) <= HEIGHT-1))
-                    engine.createParticle(currentParticleName,toInt(e.getX()),toInt(e.getY()));
-                });
+        EventHandler<MouseEvent> eventHandler = e -> {
+            if ((toInt(e.getX()) >= 0) & (toInt(e.getY()) >= 0) &
+                    (toInt(e.getX()) <= GAME_PANEL_WIDTH-1) & (toInt(e.getY()) <= HEIGHT-1))
+                for (int i = 0; i < H; i++)
+                    for (int j = 0; j < W; j++)
+                        engine.createParticle(userInput,toInt(e.getX())-W/2+j,toInt(e.getY())-H/2+i);
+        };
+        canvas.addEventHandler(MouseEvent.MOUSE_CLICKED, eventHandler);
+        canvas.addEventHandler(MouseEvent.MOUSE_DRAGGED, eventHandler);
+        canvas.addEventHandler(MouseEvent.MOUSE_PRESSED, eventHandler);
+
         root.getChildren().add(canvas);
 
         //группа для выбора пикселя
@@ -65,47 +65,47 @@ public class Noita_UI extends Application{
             //кнопка erase
             Button erase = new Button("Erase");
             erase.setMinSize(60, 10);
-            erase.setOnAction(event -> currentParticleName = "erase");
+            erase.setOnAction(event -> userInput = "erase");
             menu.getChildren().add(erase);
             //кнопка sand
             Button sand = new Button("Sand");
             sand.setMinSize(60, 10);
-            sand.setOnAction(event -> currentParticleName = "sand");
+            sand.setOnAction(event -> userInput = "sand");
             menu.getChildren().add(sand);
             //кнопка water
             Button water = new Button("Water");
             water.setMinSize(60, 10);
-            water.setOnAction(event -> currentParticleName = "water");
+            water.setOnAction(event -> userInput = "water");
             menu.getChildren().add(water);
             //кнопка steam
             Button steam = new Button("Steam");
             steam.setMinSize(60, 10);
-            steam.setOnAction(event -> currentParticleName = "steam");
+            steam.setOnAction(event -> userInput = "steam");
             menu.getChildren().add(steam);
             //кнопка acid
             Button acid = new Button("Acid");
             acid.setMinSize(60, 10);
-            acid.setOnAction(event -> currentParticleName = "acid");
+            acid.setOnAction(event -> userInput = "acid");
             menu.getChildren().add(acid);
             //кнопка oil
             Button oil = new Button("Oil");
             oil.setMinSize(60, 10);
-            oil.setOnAction(event -> currentParticleName = "oil");
+            oil.setOnAction(event -> userInput = "oil");
             menu.getChildren().add(oil);
             //кнопка wood
             Button wood = new Button("Wood");
             wood.setMinSize(60, 10);
-            wood.setOnAction(event -> currentParticleName = "wood");
+            wood.setOnAction(event -> userInput = "wood");
             menu.getChildren().add(wood);
             //кнопка stone
             Button stone = new Button("Stone");
             stone.setMinSize(60, 10);
-            stone.setOnAction(event -> currentParticleName = "stone");
+            stone.setOnAction(event -> userInput = "stone");
             menu.getChildren().add(stone);
             //кнопка fire
             Button fire = new Button("Fire");
             fire.setMinSize(60, 10);
-            fire.setOnAction(event -> currentParticleName = "fire");
+            fire.setOnAction(event -> userInput = "fire");
             menu.getChildren().add(fire);
         //добавление меню в главную группу
         root.getChildren().add(menu);
@@ -124,7 +124,7 @@ public class Noita_UI extends Application{
         //таймер
         TimerTask timerTask = new DrawTimerTask(gc);
         Timer timer = new Timer();
-        timer.scheduleAtFixedRate(timerTask, 0, 100);
+        timer.scheduleAtFixedRate(timerTask, 0, 30);
     }
 
     //возвращает image объект.
