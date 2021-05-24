@@ -1,12 +1,11 @@
 package Main;
 
-import java.io.IOException;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Scanner;
 
 public class Noita {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         Engine engine = new Engine();
 
         //сканнер для ввода в консоль
