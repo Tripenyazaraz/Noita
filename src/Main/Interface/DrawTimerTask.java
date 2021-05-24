@@ -9,11 +9,10 @@ import Particle.*;
 
 public class DrawTimerTask extends TimerTask {
     GraphicsContext gc;
-    Engine engine;
+    Engine engine = Noita_UI.engine;
 
-    public DrawTimerTask(GraphicsContext gc, Engine engine) {
+    public DrawTimerTask(GraphicsContext gc) {
         this.gc = gc;
-        this.engine = engine;
     }
 
     @Override
@@ -23,14 +22,20 @@ public class DrawTimerTask extends TimerTask {
 
     public void draw(GraphicsContext gc) {
         engine.step();
-        gc.setFill(Color.GREEN);
+        gc.setFill(Color.GRAY);
         gc.fillRect(0, 0, Noita_UI.GAME_PANEL_WIDTH, Noita_UI.HEIGHT);
-        gc.setFill(Color.RED);
-        for(int y = 0; y < Engine.width; y++) {
-            for(int x = 0; x < Engine.height; x++) {
-                if ((Engine.field[x][y] instanceof Sand)|(Engine.field[x][y] instanceof Stone)) {
-                    gc.fillRect(x, y, 2, 2);
-                }
+        for(int y = 0; y < Engine.width-1; y++) {
+            for(int x = 0; x < Engine.height-1; x++) {
+                if (Engine.field[x][y] == null) { gc.setFill(Color.GRAY); }
+                else if (Engine.field[x][y] instanceof Sand)  { gc.setFill(Color.YELLOW); }
+                else if (Engine.field[x][y] instanceof Water) { gc.setFill(Color.BLUE); }
+                else if (Engine.field[x][y] instanceof Steam) { gc.setFill(Color.WHITE); }
+                else if (Engine.field[x][y] instanceof Stone) { gc.setFill(Color.DARKGRAY); }
+                //else if (Engine.field[x][y] instanceof Acid) { gc.setFill(Color.GREEN); }
+                //else if (Engine.field[x][y] instanceof Oil)  { gc.setFill(Color.BLACK); }
+                //else if (Engine.field[x][y] instanceof Wood) { gc.setFill(Color.BROWN); }
+                //else if (Engine.field[x][y] instanceof Fire) { gc.setFill(Color.RED); }
+                gc.fillRect(x,y,1,1);
             }
         }
     }

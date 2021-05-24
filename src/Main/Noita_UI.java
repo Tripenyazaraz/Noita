@@ -30,13 +30,14 @@ public class Noita_UI extends Application{
 
     @Override
     public void start(Stage mainStage) {
-        for (int i = 1; i < 50; i++)
-            for (int j = 1; j < 50; j++)
-                Engine.field[i][j] = null;
-
+        engine.clean();
         for (int i = 1; i < 50; i++)
             for (int j = 1; j < 50; j++)
                 engine.createParticle("stone",i+50,j+50);
+
+        for (int i = 1; i < 50; i++)
+            for (int j = 1; j < 50; j++)
+                engine.createParticle("sand",i+50,j+150);
 
         mainStage.getIcons().add(getImage("icon.png"));
 
@@ -50,6 +51,8 @@ public class Noita_UI extends Application{
                 new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent e) {
+                        if ((toInt(e.getX()) >= 0) & (toInt(e.getY()) >= 0) &
+                            (toInt(e.getX()) <= GAME_PANEL_WIDTH-1) & (toInt(e.getY()) <= HEIGHT-1))
                         engine.createParticle(currentParticleName,toInt(e.getX()),toInt(e.getY()));
                     }
                 });
@@ -57,6 +60,8 @@ public class Noita_UI extends Application{
                 new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent e) {
+                        if ((toInt(e.getX()) >= 0) & (toInt(e.getY()) >= 0) &
+                            (toInt(e.getX()) <= GAME_PANEL_WIDTH-1) & (toInt(e.getY()) <= HEIGHT-1))
                         engine.createParticle(currentParticleName,toInt(e.getX()),toInt(e.getY()));
                     }
                 });
@@ -117,7 +122,7 @@ public class Noita_UI extends Application{
         mainStage.show();
 
         //таймер
-        TimerTask timerTask = new DrawTimerTask(gc, engine);
+        TimerTask timerTask = new DrawTimerTask(gc);
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(timerTask, 0, 100);
     }
