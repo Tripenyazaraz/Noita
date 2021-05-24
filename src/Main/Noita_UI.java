@@ -1,6 +1,7 @@
 package Main;
 
 import Main.Interface.DrawTimerTask;
+import javafx.event.ActionEvent;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -22,7 +23,7 @@ public class Noita_UI extends Application{
     public static final int MENU_PANEL_WIDTH = 100;
     public static final int HEIGHT = 800;
     public static Engine engine = new Engine();
-    String currentParticleName = "sand";
+    String currentParticleName = "erase";
 
     public static void main(String[] args) {
         Application.launch(args);
@@ -35,10 +36,6 @@ public class Noita_UI extends Application{
             for (int j = 1; j < 50; j++)
                 engine.createParticle("stone",i+50,j+50);
 
-        for (int i = 1; i < 50; i++)
-            for (int j = 1; j < 50; j++)
-                engine.createParticle("sand",i+50,j+150);
-
         mainStage.getIcons().add(getImage("icon.png"));
 
         //главная группа
@@ -48,22 +45,16 @@ public class Noita_UI extends Application{
         GraphicsContext gc = canvas.getGraphicsContext2D();
         //действие при клике
         canvas.addEventHandler(MouseEvent.MOUSE_CLICKED,
-                new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent e) {
-                        if ((toInt(e.getX()) >= 0) & (toInt(e.getY()) >= 0) &
-                            (toInt(e.getX()) <= GAME_PANEL_WIDTH-1) & (toInt(e.getY()) <= HEIGHT-1))
-                        engine.createParticle(currentParticleName,toInt(e.getX()),toInt(e.getY()));
-                    }
+                e -> {
+                    if ((toInt(e.getX()) >= 0) & (toInt(e.getY()) >= 0) &
+                        (toInt(e.getX()) <= GAME_PANEL_WIDTH-1) & (toInt(e.getY()) <= HEIGHT-1))
+                    engine.createParticle(currentParticleName,toInt(e.getX()),toInt(e.getY()));
                 });
         canvas.addEventHandler(MouseEvent.MOUSE_DRAGGED,
-                new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent e) {
-                        if ((toInt(e.getX()) >= 0) & (toInt(e.getY()) >= 0) &
-                            (toInt(e.getX()) <= GAME_PANEL_WIDTH-1) & (toInt(e.getY()) <= HEIGHT-1))
-                        engine.createParticle(currentParticleName,toInt(e.getX()),toInt(e.getY()));
-                    }
+                e -> {
+                    if ((toInt(e.getX()) >= 0) & (toInt(e.getY()) >= 0) &
+                        (toInt(e.getX()) <= GAME_PANEL_WIDTH-1) & (toInt(e.getY()) <= HEIGHT-1))
+                    engine.createParticle(currentParticleName,toInt(e.getX()),toInt(e.getY()));
                 });
         root.getChildren().add(canvas);
 
@@ -74,38 +65,47 @@ public class Noita_UI extends Application{
             //кнопка erase
             Button erase = new Button("Erase");
             erase.setMinSize(60, 10);
+            erase.setOnAction(event -> currentParticleName = "erase");
             menu.getChildren().add(erase);
             //кнопка sand
             Button sand = new Button("Sand");
             sand.setMinSize(60, 10);
+            sand.setOnAction(event -> currentParticleName = "sand");
             menu.getChildren().add(sand);
             //кнопка water
             Button water = new Button("Water");
             water.setMinSize(60, 10);
+            water.setOnAction(event -> currentParticleName = "water");
             menu.getChildren().add(water);
             //кнопка steam
             Button steam = new Button("Steam");
             steam.setMinSize(60, 10);
+            steam.setOnAction(event -> currentParticleName = "steam");
             menu.getChildren().add(steam);
             //кнопка acid
             Button acid = new Button("Acid");
             acid.setMinSize(60, 10);
+            acid.setOnAction(event -> currentParticleName = "acid");
             menu.getChildren().add(acid);
             //кнопка oil
             Button oil = new Button("Oil");
             oil.setMinSize(60, 10);
+            oil.setOnAction(event -> currentParticleName = "oil");
             menu.getChildren().add(oil);
             //кнопка wood
             Button wood = new Button("Wood");
             wood.setMinSize(60, 10);
+            wood.setOnAction(event -> currentParticleName = "wood");
             menu.getChildren().add(wood);
             //кнопка stone
             Button stone = new Button("Stone");
             stone.setMinSize(60, 10);
+            stone.setOnAction(event -> currentParticleName = "stone");
             menu.getChildren().add(stone);
             //кнопка fire
             Button fire = new Button("Fire");
             fire.setMinSize(60, 10);
+            fire.setOnAction(event -> currentParticleName = "fire");
             menu.getChildren().add(fire);
         //добавление меню в главную группу
         root.getChildren().add(menu);
