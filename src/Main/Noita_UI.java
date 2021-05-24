@@ -2,15 +2,17 @@ package Main;
 
 import Main.Interface.DrawTimerTask;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.paint.Color;
+
 import java.util.TimerTask;
 import java.io.InputStream;
 import java.util.Timer;
@@ -19,7 +21,8 @@ public class Noita_UI extends Application{
     public static final int GAME_PANEL_WIDTH = 800;
     public static final int MENU_PANEL_WIDTH = 100;
     public static final int HEIGHT = 800;
-    Engine engine = new Engine();
+    public static Engine engine = new Engine();
+    String currentParticleName = "sand";
 
     public static void main(String[] args) {
         Application.launch(args);
@@ -27,6 +30,14 @@ public class Noita_UI extends Application{
 
     @Override
     public void start(Stage mainStage) {
+        for (int i = 1; i < 50; i++)
+            for (int j = 1; j < 50; j++)
+                Engine.field[i][j] = null;
+
+        for (int i = 1; i < 50; i++)
+            for (int j = 1; j < 50; j++)
+                engine.createParticle("stone",i+50,j+50);
+
         mainStage.getIcons().add(getImage("icon.png"));
 
         //главная группа
@@ -34,6 +45,21 @@ public class Noita_UI extends Application{
         //канвас и его контекст
         Canvas canvas = new Canvas(GAME_PANEL_WIDTH, HEIGHT);
         GraphicsContext gc = canvas.getGraphicsContext2D();
+        //действие при клике
+        canvas.addEventHandler(MouseEvent.MOUSE_CLICKED,
+                new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent e) {
+                        engine.createParticle(currentParticleName,toInt(e.getX()),toInt(e.getY()));
+                    }
+                });
+        canvas.addEventHandler(MouseEvent.MOUSE_DRAGGED,
+                new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent e) {
+                        engine.createParticle(currentParticleName,toInt(e.getX()),toInt(e.getY()));
+                    }
+                });
         root.getChildren().add(canvas);
 
         //группа для выбора пикселя
@@ -93,12 +119,17 @@ public class Noita_UI extends Application{
         //таймер
         TimerTask timerTask = new DrawTimerTask(gc, engine);
         Timer timer = new Timer();
-        timer.scheduleAtFixedRate(timerTask, 0, 500);
+        timer.scheduleAtFixedRate(timerTask, 0, 100);
     }
 
     //возвращает image объект.
     public Image getImage(String path) {
         InputStream imageStream = this.getClass().getResourceAsStream("/Images/" + path);
         return new Image(imageStream);
+    }
+    //конвертирует Double в int
+    public int toInt(Double x) {
+        int intValue = (int) Math.round(x);
+        return intValue;
     }
 }
