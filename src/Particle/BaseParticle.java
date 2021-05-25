@@ -27,11 +27,6 @@ public class BaseParticle {
         Engine.field[a][b].moveTo(oldX,oldY);
     }
 
-    public Boolean rnd() {
-        Random random = new Random();
-        return (random.nextInt(2) == 1);
-    }
-
     public Boolean is(String name, int x, int y) {
         if ((x <= Engine.width-1) & (y <= Engine.height-1) & (x >= 0) & (y >= 0)) {
                  if (name.equalsIgnoreCase("empty")) return Engine.field[x][y] == null;
