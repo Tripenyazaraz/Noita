@@ -2,34 +2,48 @@ package Particle;
 
 import Main.*;
 
-public class BaseParticle {
-    private int x;
-    private int y;
+import java.util.Random;
 
-    public void setX(int x) {
+public class BaseParticle {
+    public int x;
+    public int y;
+
+    public void update() {}
+
+    public void moveTo(int x, int y) {
+        Engine.field[x][y] = Engine.field[this.x][this.y];
+        Engine.field[this.x][this.y] = null;
         this.x = x;
-    }
-    public void setY(int y) {
         this.y = y;
     }
 
-    public int getX() {
-        return x;
-    }
-    public int getY() {
-        return y;
-    }
-
-    public void moveTo(int x, int y) {
-        Engine.field[x][y] = Engine.field[this.getX()][this.getY()];
-        Engine.field[this.getX()][this.getY()] = null;
-        this.setX(x);
-        this.setY(y);
+    public void swapWith(int x, int y) {
+        int a = 0;
+        int b = 0;
+        Engine.field[x][y].moveTo(a,b);
+        int oldX = this.x;
+        int oldY = this.y;
+        Engine.field[this.x][this.y].moveTo(x,y);
+        Engine.field[a][b].moveTo(oldX,oldY);
     }
 
-    public Boolean isEmpty(int x, int y) {
+    public Boolean rnd() {
+        Random random = new Random();
+        return (random.nextInt(2) == 1);
+    }
+
+    public Boolean is(String name, int x, int y) {
         if ((x <= Engine.width-1) & (y <= Engine.height-1) & (x >= 0) & (y >= 0)) {
-            return (Engine.field[x][y] == null);
+                 if (name.equalsIgnoreCase("empty")) return Engine.field[x][y] == null;
+            else if (name.equalsIgnoreCase("sand"))  return Engine.field[x][y] instanceof Sand;
+            else if (name.equalsIgnoreCase("water")) return Engine.field[x][y] instanceof Water;
+            else if (name.equalsIgnoreCase("steam")) return Engine.field[x][y] instanceof Steam;
+            else if (name.equalsIgnoreCase("stone")) return Engine.field[x][y] instanceof Stone;
+//            else if (name.equalsIgnoreCase("acid")) return Engine.field[x][y] instanceof Acid;
+//            else if (name.equalsIgnoreCase("oil"))  return Engine.field[x][y] instanceof Oil;
+//            else if (name.equalsIgnoreCase("wood")) return Engine.field[x][y] instanceof Wood;
+//            else if (name.equalsIgnoreCase("fire")) return Engine.field[x][y] instanceof Fire;
+            else return false;
         } else return false;
     }
 }

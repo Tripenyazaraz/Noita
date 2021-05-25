@@ -25,8 +25,8 @@ public class DrawTimerTask extends TimerTask {
     public void draw(GraphicsContext gc) {
         Platform.runLater(()->{
             gc.fillRect(0, 0, Noita_UI.GAME_PANEL_WIDTH, Noita_UI.HEIGHT);
-            for(int y = 0; y < Engine.width-1; y++) {
-                for(int x = 0; x < Engine.height-1; x++) {
+            for(int y = 0; y < Engine.width; y++) {
+                for(int x = 0; x < Engine.height; x++) {
                          if (Engine.field[x][y] == null) { gc.setFill(Color.GRAY); }
                     else if (Engine.field[x][y] instanceof Sand)  { gc.setFill(Color.YELLOW); }
                     else if (Engine.field[x][y] instanceof Water) { gc.setFill(Color.BLUE); }

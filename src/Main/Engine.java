@@ -4,14 +4,14 @@ import Particle.*;
 public class Engine {
     public static int width = Noita_UI.GAME_PANEL_WIDTH;
     public static int height = Noita_UI.HEIGHT;
-    public static ParticleInterface[][] field = new ParticleInterface[width][height];
+    public static BaseParticle[][] field = new BaseParticle[width][height];
 
     //шаг физики
     public void step() {
         for(int y = height-1; y >= 0; y--) {
             for(int x = 0; x < width; x++) {
                 if (field[x][y] != null) {
-                    field[x][y].update(x,y);
+                    field[x][y].update();
                 }
             }
         }
