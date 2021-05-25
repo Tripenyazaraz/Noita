@@ -1,14 +1,14 @@
 package Particle;
 
-public class Stone extends BaseParticle implements ParticleInterface {
+public class Stone extends BaseParticle {
     //конструктор
     public Stone(int x, int y) {
-        this.setX(x);
-        this.setY(y);
+        this.x = x;
+        this.y = y;
     }
 
     @Override
-    public void update(int x, int y) {
+    public void update() {
         //i am stay still
     }
 }
