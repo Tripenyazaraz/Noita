@@ -1,7 +1,7 @@
 package Main.Interface;
 
 import Main.Engine;
-import Main.Noita_UI;
+import Main.Noita;
 import javafx.application.Platform;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -10,7 +10,7 @@ import Particle.*;
 
 public class DrawTimerTask extends TimerTask {
     GraphicsContext gc;
-    Engine engine = Noita_UI.engine;
+    Engine engine = Noita.engine;
 
     public DrawTimerTask(GraphicsContext gc) {
         this.gc = gc;
@@ -24,7 +24,7 @@ public class DrawTimerTask extends TimerTask {
 
     public void draw(GraphicsContext gc) {
         Platform.runLater(()->{
-            gc.fillRect(0, 0, Noita_UI.GAME_PANEL_WIDTH, Noita_UI.HEIGHT);
+            gc.fillRect(0, 0, Noita.GAME_PANEL_WIDTH, Noita.HEIGHT);
             for(int y = 0; y < Engine.width; y++) {
                 for(int x = 0; x < Engine.height; x++) {
                          if (Engine.field[x][y] == null) { gc.setFill(Color.GRAY); }
