@@ -1,3 +1,4 @@
+//--module-path ${PATH_TO_FX} --add-modules javafx.controls,javafx.fxml
 package Main;
 
 import Main.Interface.DrawTimerTask;
@@ -33,7 +34,7 @@ public class Noita extends Application{
 
     @Override
     public void start(Stage mainStage) {
-        mainStage.getIcons().add(getImage("/Images/icon.png"));
+        mainStage.getIcons().add(getImage("/Images/icon2.png"));
         engine.clean();
 
         //главная группа
@@ -123,7 +124,7 @@ public class Noita extends Application{
         //таймер
         TimerTask timerTask = new DrawTimerTask(gc);
         Timer timer = new Timer();
-        timer.scheduleAtFixedRate(timerTask, 0, 30);
+        timer.scheduleAtFixedRate(timerTask, 0, 50);
     }
 
     //возвращает image объект.
