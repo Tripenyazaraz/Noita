@@ -28,8 +28,8 @@ public class Noita extends Application{
     //variables
     public static Engine engine = new Engine();
 
-    int W = 7; //size of generate particles
-    int H = 7;
+    int W = 10; //size of generate particles
+    int H = 10;
 
     int mouseX = 0; //for current mouse position
     int mouseY = 0;
@@ -56,18 +56,20 @@ public class Noita extends Application{
         TimerTask mouseTask = new TimerTask() {
             @Override
             public void run() {
-                if ((mouseX >= 0) & (mouseY >= 0) & isPressed &
-                    (mouseX <= GAME_PANEL_WIDTH-1) & (mouseY <= HEIGHT-1))
-                    for (int i = 0; i < H; i++)
-                        for (int j = 0; j < W; j++)
-                            if ((mouseX-W/2+j >= 0)&(mouseY-H/2+i >= 0) &
-                                    (mouseX-W/2+j <= GAME_PANEL_WIDTH-1)&(mouseY-H/2+i <= HEIGHT-1))
-                                engine.createParticle(userInput,mouseX-W/2+j,mouseY-H/2+i);
+                if (isPressed) {
+                    if ((mouseX >= 0) & (mouseY >= 0) &
+                        (mouseX <= GAME_PANEL_WIDTH-1) & (mouseY <= HEIGHT-1))
+                        for (int i = 0; i < H; i++)
+                            for (int j = 0; j < W; j++)
+                                if ((mouseX-W/2+j >= 0)&(mouseY-H/2+i >= 0) &
+                                        (mouseX-W/2+j <= GAME_PANEL_WIDTH-1)&(mouseY-H/2+i <= HEIGHT-1))
+                                    engine.createParticle(userInput,mouseX-W/2+j,mouseY-H/2+i);
+                }
             }
         };
         //mouseEvent's
         this.mouseTimer = new Timer();
-        this.mouseTimer.scheduleAtFixedRate(mouseTask,5,100);
+        this.mouseTimer.scheduleAtFixedRate(mouseTask,0,5);
         EventHandler<MouseEvent> mouseEventStart = e -> {
             isPressed = true;
             mouseX = toInt(e.getX());
