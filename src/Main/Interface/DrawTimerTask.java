@@ -24,7 +24,7 @@ public class DrawTimerTask extends TimerTask {
 
     public void draw(GraphicsContext gc) {
         Platform.runLater(()->{
-            gc.fillRect(0, 0, Noita.GAME_PANEL_WIDTH, Noita.HEIGHT);
+            gc.fillRect(0, 0, Noita.GAME_PANEL_WIDTH, Noita.PANEL_HEIGHT);
             for(int y = 0; y < Engine.width; y++) {
                 for(int x = 0; x < Engine.height; x++) {
                          if (Engine.field[x][y] == null) { gc.setFill(Color.GRAY); }
