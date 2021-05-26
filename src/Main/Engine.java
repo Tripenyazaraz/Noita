@@ -2,8 +2,8 @@ package Main;
 import Particle.*;
 
 public class Engine {
-    public static int width = Noita.GAME_PANEL_WIDTH;
-    public static int height = Noita.PANEL_HEIGHT;
+    public static int width = Noita.GAME_WIDTH;
+    public static int height = Noita.HEIGHT;
     public static BaseParticle[][] field = new BaseParticle[width][height];
 
     //шаг физики

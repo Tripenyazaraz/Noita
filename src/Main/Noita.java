@@ -20,12 +20,12 @@ import java.util.Timer;
 
 public class Noita extends Application{
     //CONSTANTS
-    public static final int GAME_PANEL_WIDTH = 800;
-    public static final int MENU_PANEL_WIDTH = 120;
-    public static final int PANEL_HEIGHT = 800;
+    public static final int GAME_WIDTH = 500;
+    public static final int MENU_WIDTH = 120;
+    public static final int HEIGHT = 500;
     public static final int BUTTON_WIDTH = 80;
     public static final int BUTTON_HEIGHT = 10;
-    public static final int WTF = 39;
+    public static final int ADDITIONAL_CANVAS_SIZE = 39;
 
     //variables
     public static Engine engine = new Engine();
@@ -63,7 +63,7 @@ public class Noita extends Application{
 
         //group and canvas
         HBox root = new HBox();
-        Canvas canvas = new Canvas(GAME_PANEL_WIDTH, PANEL_HEIGHT);
+        Canvas canvas = new Canvas(GAME_WIDTH, HEIGHT);
 
         //mouseTask
         TimerTask mouseTask = new TimerTask() {
@@ -71,7 +71,7 @@ public class Noita extends Application{
             public void run() {
                 if (isPressed)
                     if ((mouseX >= 0) & (mouseY >= 0) &
-                            (mouseX <= GAME_PANEL_WIDTH-1) & (mouseY <= PANEL_HEIGHT -1)) {
+                            (mouseX <= GAME_WIDTH -1) & (mouseY <= HEIGHT -1)) {
                         switch (whichButton) {
                             case ("PRIMARY") -> toPaste = chosenParticle;
                             case ("SECONDARY") -> toPaste = "erase";
@@ -79,7 +79,7 @@ public class Noita extends Application{
                         for (int i = 0; i < H; i++)
                             for (int j = 0; j < W; j++)
                                 if ((mouseX-W/2+j >= 0)&(mouseY-H/2+i >= 0) &
-                                        (mouseX-W/2+j <= GAME_PANEL_WIDTH-1)&(mouseY-H/2+i <= PANEL_HEIGHT -1))
+                                        (mouseX-W/2+j <= GAME_WIDTH -1)&(mouseY-H/2+i <= HEIGHT -1))
                                     engine.createParticle(toPaste,mouseX-W/2+j,mouseY-H/2+i);
                     }
             }
@@ -167,8 +167,8 @@ public class Noita extends Application{
         Scene scene = new Scene(root);
         mainStage.setScene(scene);
         mainStage.setTitle("Noita");
-        mainStage.setWidth(GAME_PANEL_WIDTH + MENU_PANEL_WIDTH);
-        mainStage.setHeight(PANEL_HEIGHT +WTF);
+        mainStage.setWidth(GAME_WIDTH + MENU_WIDTH);
+        mainStage.setHeight(HEIGHT + ADDITIONAL_CANVAS_SIZE);
         mainStage.setResizable(false);
         mainStage.show();
 
