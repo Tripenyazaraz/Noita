@@ -27,15 +27,15 @@ public class DrawTimerTask extends TimerTask {
             gc.fillRect(0, 0, Noita.GAME_WIDTH, Noita.HEIGHT);
             for(int y = 0; y < Engine.height; y++) {
                 for(int x = 0; x < Engine.width; x++) {
-                         if (Engine.field[x][y] == null) { gc.setFill(Color.GRAY); }
+                         if (Engine.field[x][y] == null)          { gc.setFill(Color.GRAY); }
                     else if (Engine.field[x][y] instanceof Sand)  { gc.setFill(Color.YELLOW); }
                     else if (Engine.field[x][y] instanceof Water) { gc.setFill(Color.BLUE); }
                     else if (Engine.field[x][y] instanceof Steam) { gc.setFill(Color.WHITE); }
                     else if (Engine.field[x][y] instanceof Stone) { gc.setFill(Color.LIGHTGRAY); }
-                    //else if (Engine.field[x][y] instanceof Acid) { gc.setFill(Color.GREEN); }
-                    //else if (Engine.field[x][y] instanceof Oil)  { gc.setFill(Color.BLACK); }
-                    //else if (Engine.field[x][y] instanceof Wood) { gc.setFill(Color.BROWN); }
-                    //else if (Engine.field[x][y] instanceof Fire) { gc.setFill(Color.RED); }
+                    else if (Engine.field[x][y] instanceof Acid)  { gc.setFill(Color.LIMEGREEN); }
+                    else if (Engine.field[x][y] instanceof Oil)   { gc.setFill(Color.BLACK); }
+                    else if (Engine.field[x][y] instanceof Wood)  { gc.setFill(Color.rgb(115, 67, 16)); }
+                    else if (Engine.field[x][y] instanceof Fire)  { gc.setFill(Color.ORANGERED); }
                     gc.fillRect(x,y,1,1);
                 }
             }

@@ -27,12 +27,11 @@ public class Engine {
                 else if (field[x][y] instanceof Water) { System.out.print("W "); }
                 else if (field[x][y] instanceof Steam) { System.out.print("G "); }
                 else if (field[x][y] instanceof Stone) { System.out.print("R "); }
-                /*
-                else if (field[x][y] instanceof Acid) { System.out.print("A "); }
-                else if (field[x][y] instanceof Oil)  { System.out.print("O "); }
-                else if (field[x][y] instanceof Wood) { System.out.print("D "); }
-                else if (field[x][y] instanceof Fire) { System.out.print("F "); }
-                */
+                else if (field[x][y] instanceof Acid)  { System.out.print("A "); }
+                else if (field[x][y] instanceof Oil)   { System.out.print("O "); }
+                else if (field[x][y] instanceof Wood)  { System.out.print("D "); }
+                else if (field[x][y] instanceof Fire)  { System.out.print("F "); }
+
             }
         }
         //отступы
@@ -53,15 +52,14 @@ public class Engine {
     public void createParticle(String particleName, int x, int y) {
         switch (particleName) {
             case ("erase") -> Engine.field[x][y] = null;
-            case ("sand")  -> Engine.field[x][y] = new Sand( x, y);
-            case ("water") -> Engine.field[x][y] = new Water(x, y);
-            case ("steam") -> Engine.field[x][y] = new Steam(x, y);
-            case ("stone") -> Engine.field[x][y] = new Stone(x, y);
-
-            case ("acid")  -> Engine.field[x][y] = new Sand(x,y);
-            case ("oil")   -> Engine.field[x][y] = new Sand(x,y);
-            case ("wood")  -> Engine.field[x][y] = new Sand(x,y);
-            case ("fire")  -> Engine.field[x][y] = new Sand(x,y);
+            case ("sand")  -> Engine.field[x][y] = new Sand( x,y);
+            case ("water") -> Engine.field[x][y] = new Water(x,y);
+            case ("steam") -> Engine.field[x][y] = new Steam(x,y);
+            case ("stone") -> Engine.field[x][y] = new Stone(x,y);
+            case ("acid")  -> Engine.field[x][y] = new Acid( x,y);
+            case ("oil")   -> Engine.field[x][y] = new Oil(  x,y);
+            case ("wood")  -> Engine.field[x][y] = new Wood( x,y);
+            case ("fire")  -> Engine.field[x][y] = new Fire( x,y);
 
         }
     }
