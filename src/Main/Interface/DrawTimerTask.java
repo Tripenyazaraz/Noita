@@ -35,7 +35,8 @@ public class DrawTimerTask extends TimerTask {
                     else if (Engine.field[x][y] instanceof Acid)  { gc.setFill(Color.LIMEGREEN); }
                     else if (Engine.field[x][y] instanceof Oil)   { gc.setFill(Color.BLACK); }
                     else if (Engine.field[x][y] instanceof Wood)  { gc.setFill(Color.rgb(115, 67, 16)); }
-                    else if (Engine.field[x][y] instanceof Fire)  { gc.setFill(Color.ORANGERED); }
+                    else if (Engine.field[x][y] instanceof Fire)  { if (Math.random() < 0.5) gc.setFill(Color.ORANGERED);
+                                                                    else                     gc.setFill(Color.ORANGE); }
                     gc.fillRect(x,y,1,1);
                 }
             }
