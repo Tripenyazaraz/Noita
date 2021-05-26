@@ -59,7 +59,7 @@ public class Noita extends Application{
 
     //create all GUI and return canvas
     public Canvas createGUI(Stage mainStage) {
-        mainStage.getIcons().add(getImage("/Images/icon1.png"));
+        mainStage.getIcons().add(getImage("/Images/icon2.png"));
 
         //group and canvas
         HBox root = new HBox();
