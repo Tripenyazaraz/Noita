@@ -33,12 +33,13 @@ public class Noita extends Application{
 
     int mouseX = 0; //for current mouse position
     int mouseY = 0;
-    String whichButton;
-    String toPaste;
-    Boolean isPressed = false;
-    Timer mouseTimer;
 
-    String choosenParticle = "sand";
+    String whichButton;             //what button is pressed
+    String chosenParticle = "sand"; //which particle is chosen
+    String toPaste;                 //paste or erase
+    Boolean isPressed = false;      //is button pressed
+    Timer mouseTimer;               //global timer to mouseClick
+
 
     public static void main(String[] args) {
         Application.launch(args);
@@ -46,13 +47,21 @@ public class Noita extends Application{
 
     @Override
     public void start(Stage mainStage) {
+        Canvas canvas = createGUI(mainStage);
+
+        //physics and draw timer
+        TimerTask timerTask = new DrawTimerTask(canvas.getGraphicsContext2D());
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(timerTask, 0, 50);
+    }
+
+    //create all GUI and return canvas
+    public Canvas createGUI(Stage mainStage) {
         mainStage.getIcons().add(getImage("/Images/icon1.png"));
-        engine.clean();
 
         //group and canvas
         HBox root = new HBox();
         Canvas canvas = new Canvas(GAME_PANEL_WIDTH, HEIGHT);
-        GraphicsContext gc = canvas.getGraphicsContext2D();
 
         //mouseTask
         TimerTask mouseTask = new TimerTask() {
@@ -60,9 +69,9 @@ public class Noita extends Application{
             public void run() {
                 if (isPressed)
                     if ((mouseX >= 0) & (mouseY >= 0) &
-                        (mouseX <= GAME_PANEL_WIDTH-1) & (mouseY <= HEIGHT-1)) {
+                            (mouseX <= GAME_PANEL_WIDTH-1) & (mouseY <= HEIGHT-1)) {
                         switch (whichButton) {
-                            case ("PRIMARY") -> toPaste = choosenParticle;
+                            case ("PRIMARY") -> toPaste = chosenParticle;
                             case ("SECONDARY") -> toPaste = "erase";
                         }
                         for (int i = 0; i < H; i++)
@@ -73,6 +82,7 @@ public class Noita extends Application{
                     }
             }
         };
+
         //mouseEvent's
         this.mouseTimer = new Timer();
         this.mouseTimer.scheduleAtFixedRate(mouseTask,0,5);
@@ -89,6 +99,7 @@ public class Noita extends Application{
             mouseX = toInt(e.getX());
             mouseY = toInt(e.getY());
         };
+
         //canvass add mouseEvent's
         canvas.addEventHandler(MouseEvent.MOUSE_PRESSED, mouseEventStart);
         canvas.addEventHandler(MouseEvent.MOUSE_RELEASED,mouseEventStop);
@@ -99,46 +110,46 @@ public class Noita extends Application{
         VBox menu = new VBox(10);
         menu.setStyle("-fx-background-color: #5D5D5D;");
         menu.setPadding(new Insets(10,12,0,12));
-            //sand button
-            Button sand = new Button("Sand");
-            sand.setMinSize(60, 10);
-            sand.setOnAction(event -> choosenParticle = "sand");
-            menu.getChildren().add(sand);
-            //water button
-            Button water = new Button("Water");
-            water.setMinSize(60, 10);
-            water.setOnAction(event -> choosenParticle = "water");
-            menu.getChildren().add(water);
-            //steam button
-            Button steam = new Button("Steam");
-            steam.setMinSize(60, 10);
-            steam.setOnAction(event -> choosenParticle = "steam");
-            menu.getChildren().add(steam);
-            //stone button
-            Button stone = new Button("Stone");
-            stone.setMinSize(60, 10);
-            stone.setOnAction(event -> choosenParticle = "stone");
-            menu.getChildren().add(stone);
-            //acid button
-            Button acid = new Button("Acid");
-            acid.setMinSize(60, 10);
-            acid.setOnAction(event -> choosenParticle = "acid");
-            menu.getChildren().add(acid);
-            //oil button
-            Button oil = new Button("Oil");
-            oil.setMinSize(60, 10);
-            oil.setOnAction(event -> choosenParticle = "oil");
-            menu.getChildren().add(oil);
-            //wood button
-            Button wood = new Button("Wood");
-            wood.setMinSize(60, 10);
-            wood.setOnAction(event -> choosenParticle = "wood");
-            menu.getChildren().add(wood);
-            //fire button
-            Button fire = new Button("Fire");
-            fire.setMinSize(60, 10);
-            fire.setOnAction(event -> choosenParticle = "fire");
-            menu.getChildren().add(fire);
+        //sand button
+        Button sand = new Button("Sand");
+        sand.setMinSize(60, 10);
+        sand.setOnAction(event -> chosenParticle = "sand");
+        menu.getChildren().add(sand);
+        //water button
+        Button water = new Button("Water");
+        water.setMinSize(60, 10);
+        water.setOnAction(event -> chosenParticle = "water");
+        menu.getChildren().add(water);
+        //steam button
+        Button steam = new Button("Steam");
+        steam.setMinSize(60, 10);
+        steam.setOnAction(event -> chosenParticle = "steam");
+        menu.getChildren().add(steam);
+        //stone button
+        Button stone = new Button("Stone");
+        stone.setMinSize(60, 10);
+        stone.setOnAction(event -> chosenParticle = "stone");
+        menu.getChildren().add(stone);
+        //acid button
+        Button acid = new Button("Acid");
+        acid.setMinSize(60, 10);
+        acid.setOnAction(event -> chosenParticle = "acid");
+        menu.getChildren().add(acid);
+        //oil button
+        Button oil = new Button("Oil");
+        oil.setMinSize(60, 10);
+        oil.setOnAction(event -> chosenParticle = "oil");
+        menu.getChildren().add(oil);
+        //wood button
+        Button wood = new Button("Wood");
+        wood.setMinSize(60, 10);
+        wood.setOnAction(event -> chosenParticle = "wood");
+        menu.getChildren().add(wood);
+        //fire button
+        Button fire = new Button("Fire");
+        fire.setMinSize(60, 10);
+        fire.setOnAction(event -> chosenParticle = "fire");
+        menu.getChildren().add(fire);
         //group add particle menu
         root.getChildren().add(menu);
 
@@ -151,12 +162,9 @@ public class Noita extends Application{
         mainStage.setResizable(false);
         mainStage.show();
 
-        //physics and draw timer
-        TimerTask timerTask = new DrawTimerTask(gc);
-        Timer timer = new Timer();
-        timer.scheduleAtFixedRate(timerTask, 0, 50);
+        //return graphics context
+        return canvas;
     }
-
     //return imageStream
     public Image getImage(String path) {
         InputStream imageStream = this.getClass().getResourceAsStream(path);
