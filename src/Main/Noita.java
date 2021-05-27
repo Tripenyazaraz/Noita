@@ -176,7 +176,7 @@ public class Noita extends Application{
             fire.setOnAction(event -> chosenParticle = "fire");
             menu.getChildren().add(fire);
             //label
-            Label label2 = new Label("LMB for create RMB fo erase");
+            Label label2 = new Label("LMB to create RMB to erase");
             label2.setWrapText(true);
             menu.getChildren().add(label2);
         //group add particle menu
