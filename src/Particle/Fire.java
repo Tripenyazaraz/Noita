@@ -1,5 +1,7 @@
 package Particle;
 
+import Main.Engine;
+
 public class Fire extends BaseParticle {
     //конструктор
     public Fire(int x, int y) {
@@ -9,6 +11,8 @@ public class Fire extends BaseParticle {
 
     @Override
     public void update() {
-        //i am stay still
+        if (Math.random() < 0.05) {
+            Engine.field[x][y] = null;
+        }
     }
 }

@@ -1,7 +1,6 @@
 //--module-path ${PATH_TO_FX} --add-modules javafx.controls,javafx.fxml
 package Main;
 
-import Main.Interface.DrawTimerTask;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -29,19 +28,18 @@ public class Noita extends Application{
 
     //variables
     public static Engine engine = new Engine();
-
-    int W = 10; //size of generate particles
-    int H = 10;
-
-    int mouseX = 0; //for current mouse position
-    int mouseY = 0;
-
     String whichButton;             //what button is pressed
     String chosenParticle = "sand"; //which particle is chosen
     String toPaste;                 //paste or erase
     Boolean isPressed = false;      //is button pressed
     Timer mouseTimer;               //global timer to mouseClick
 
+    int mouseX = 0; //for current mouse position
+    int mouseY = 0;
+    int W = 10;  //size of generate particles
+    int H = 10;
+    int stepPerSecond = 3;  //rate of physic step and draw
+    int drawPerSecond = 50;
 
     public static void main(String[] args) {
         Application.launch(args);
@@ -50,11 +48,27 @@ public class Noita extends Application{
     @Override
     public void start(Stage mainStage) {
         Canvas canvas = createGUI(mainStage);
+        //Draw Task
+        TimerTask drawTask = new TimerTask() {
+            @Override
+            public void run() {
+                engine.draw(canvas.getGraphicsContext2D());
+            }
+        };
+        //Draw Timer
+        Timer timerDraw = new Timer();
+        timerDraw.scheduleAtFixedRate(drawTask,0,drawPerSecond);
 
-        //physics and draw timer
-        TimerTask timerTask = new DrawTimerTask(canvas.getGraphicsContext2D());
-        Timer timer = new Timer();
-        timer.scheduleAtFixedRate(timerTask, 0, 50);
+        //Physic step Task
+        TimerTask stepTask = new TimerTask() {
+            @Override
+            public void run() {
+                engine.step();
+            }
+        };
+        //Physic step Timer
+        Timer timerStep = new Timer();
+        timerStep.scheduleAtFixedRate(stepTask,0,stepPerSecond);
     }
 
     //create all GUI and return canvas
@@ -116,6 +130,11 @@ public class Noita extends Application{
             Label label1 = new Label("Choose particle");
             label1.setWrapText(true);
             menu.getChildren().add(label1);
+            //sand button
+            Button eraseAll = new Button("ERASE ALL");
+            eraseAll.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
+            eraseAll.setOnAction(event -> engine.clean());
+            menu.getChildren().add(eraseAll);
             //sand button
             Button sand = new Button("Sand");
             sand.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);

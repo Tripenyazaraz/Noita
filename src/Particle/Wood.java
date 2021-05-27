@@ -5,6 +5,7 @@ public class Wood extends BaseParticle {
     public Wood(int x, int y) {
         this.x = x;
         this.y = y;
+        this.fuel = true;
     }
 
     @Override

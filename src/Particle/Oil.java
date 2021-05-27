@@ -5,6 +5,7 @@ public class Oil extends BaseParticle {
     public Oil(int x, int y) {
         this.x = x;
         this.y = y;
+        this.fuel = true;
     }
 
     @Override

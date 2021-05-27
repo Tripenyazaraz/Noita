@@ -13,7 +13,7 @@ public class Water extends BaseParticle {
 
     @Override
     public void update() {
-        Boolean down      = is("empty",x,y+1);
+        Boolean down      = is("empty",x,  y+1);
         Boolean left      = is("empty",x-1,y);
         Boolean right     = is("empty",x+1,y);
         Boolean downLeft  = is("empty",x-1,y+1);

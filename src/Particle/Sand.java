@@ -11,9 +11,7 @@ public class Sand extends BaseParticle {
 
     @Override
     public void update() {
-        Boolean down      = is("empty",x,y+1);
-        Boolean left      = is("empty",x-1,y);
-        Boolean right     = is("empty",x+1,y);
+        Boolean down      = is("empty",x,  y+1);
         Boolean downLeft  = is("empty",x-1,y+1);
         Boolean downRight = is("empty",x+1,y+1);
 

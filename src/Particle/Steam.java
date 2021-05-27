@@ -11,7 +11,7 @@ public class Steam extends BaseParticle {
 
     @Override
     public void update() {
-        Boolean up      = is("empty",x,y-1);
+        Boolean up      = is("empty",x,  y-1);
         Boolean left    = is("empty",x-1,y);
         Boolean right   = is("empty",x+1,y);
         Boolean upLeft  = is("empty",x-1,y-1);
