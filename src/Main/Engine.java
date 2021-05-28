@@ -13,8 +13,9 @@ public class Engine {
     public void step() {
         for(int y = height-1; y >= 0; y--) {
             for(int x = 0; x <= width-1; x++) {
-                if (field[x][y] != null) {
-                    field[x][y].update();
+                int rx = (int) (Math.random() * width-1);
+                if (field[rx][y] != null) {
+                    field[rx][y].update();
                 }
             }
         }
