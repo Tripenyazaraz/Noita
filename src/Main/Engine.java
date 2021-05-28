@@ -12,7 +12,7 @@ public class Engine {
     //шаг физики
     public void step() {
         for(int y = height-1; y >= 0; y--) {
-            for(int x = 0; x < width; x++) {
+            for(int x = 0; x <= width-1; x++) {
                 if (field[x][y] != null) {
                     field[x][y].update();
                 }
@@ -23,7 +23,7 @@ public class Engine {
     //очищение
     public void clean() {
         for(int y = height-1; y >= 0; y--) {
-            for(int x = 0; x < width; x++) {
+            for(int x = 0; x <= width-1; x++) {
                 field[x][y] = null;
             }
         }
