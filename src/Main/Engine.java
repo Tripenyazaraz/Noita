@@ -4,18 +4,31 @@ import javafx.application.Platform;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class Engine {
     public static int width = Noita.GAME_WIDTH;
     public static int height = Noita.HEIGHT;
     public static BaseParticle[][] field = new BaseParticle[width][height];
+    Integer[] rx = new Integer[width];
+
+    public Engine() {
+        for(int x = 0; x <= width-1; x++) {
+            rx[x]=x;
+        }
+    }
 
     //шаг физики
     public void step() {
+        List<Integer> intList = Arrays.asList(rx);
+        Collections.shuffle(intList);
+        intList.toArray(rx);
         for(int y = height-1; y >= 0; y--) {
             for(int x = 0; x <= width-1; x++) {
-                int rx = (int) (Math.random() * width-1);
-                if (field[rx][y] != null) {
-                    field[rx][y].update();
+                if (field[rx[x]][y] != null) {
+                    field[rx[x]][y].update();
                 }
             }
         }
