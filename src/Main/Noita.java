@@ -1,4 +1,3 @@
-//--module-path ${PATH_TO_FX} --add-modules javafx.controls,javafx.fxml
 package Main;
 
 import javafx.application.Application;
@@ -130,7 +129,7 @@ public class Noita extends Application{
             Label label1 = new Label("Choose particle");
             label1.setWrapText(true);
             menu.getChildren().add(label1);
-            //sand button
+            //eraseAll button
             Button eraseAll = new Button("ERASE ALL");
             eraseAll.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
             eraseAll.setOnAction(event -> engine.clean());
