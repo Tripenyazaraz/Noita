@@ -1,6 +1,7 @@
 package Main;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -11,6 +12,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.stage.WindowEvent;
 
 import java.util.TimerTask;
 import java.io.InputStream;
@@ -46,6 +48,10 @@ public class Noita extends Application{
 
     @Override
     public void start(Stage mainStage) {
+        mainStage.setOnCloseRequest(event -> {
+            Platform.exit();
+            System.exit(0);
+        });
         Canvas canvas = createGUI(mainStage);
         //Draw Task
         TimerTask drawTask = new TimerTask() {
@@ -107,9 +113,7 @@ public class Noita extends Application{
             mouseY = toInt(e.getY());
             whichButton = e.getButton().toString();
         };
-        EventHandler<MouseEvent> mouseEventStop = e -> {
-            isPressed = false;
-        };
+        EventHandler<MouseEvent> mouseEventStop = e -> isPressed = false;
         EventHandler<MouseEvent> mouseEventMoved = e -> {
             mouseX = toInt(e.getX());
             mouseY = toInt(e.getY());
