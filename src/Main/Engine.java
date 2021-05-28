@@ -13,26 +13,39 @@ public class Engine {
     public static int height = Noita.HEIGHT;
     public static BaseParticle[][] field = new BaseParticle[width][height];
     Integer[] rx = new Integer[width];
+    Integer[] ry = new Integer[height];
 
     public Engine() {
-        for(int x = 0; x <= width-1; x++) {
-            rx[x]=x;
-        }
+        for(int x = 0; x <= width-1; x++) rx[x]=x;
+        for(int y = 0; y <= height-1; y++) ry[y]=y;
     }
 
     //шаг физики
     public void step() {
-        List<Integer> intList = Arrays.asList(rx);
-        Collections.shuffle(intList);
-        intList.toArray(rx);
+        List<Integer> yList = Arrays.asList(ry);
+        Collections.shuffle(yList);
+        yList.toArray(ry);
         for(int y = height-1; y >= 0; y--) {
+            List<Integer> xList = Arrays.asList(rx);
+            Collections.shuffle(xList);
+            xList.toArray(rx);
             for(int x = 0; x <= width-1; x++) {
-                if (field[rx[x]][y] != null) {
-                    field[rx[x]][y].update();
+                if (field[rx[x]][ry[y]] != null) {
+                    if (Math.random() < 0.8) field[rx[x]][ry[y]].update();
                 }
             }
         }
     }
+
+//    public void step() {
+//        for (int y = height - 1; y >= 0; y--) {
+//            for (int x = 0; x <= width - 1; x++) {
+//                if (field[rx[x]][y] != null) {
+//                    if (Math.random() < 0.7) field[x][y].update();
+//                }
+//            }
+//        }
+//    }
 
     //очищение
     public void clean() {
@@ -54,7 +67,7 @@ public class Engine {
             case ("acid")  -> Engine.field[x][y] = new Acid( x,y);
             case ("oil")   -> Engine.field[x][y] = new Oil(  x,y);
             case ("wood")  -> Engine.field[x][y] = new Wood( x,y);
-            case ("fire")  -> {if (Engine.field[x][y] == null)   Engine.field[x][y] = new Fire(x,y);
+            case ("fire")  -> {if (Engine.field[x][y] == null) Engine.field[x][y] = new Fire(x,y);
                                else if (Engine.field[x][y].fuel) Engine.field[x][y] = new Fire(x,y);}
         }
     }
@@ -65,7 +78,7 @@ public class Engine {
             gc.fillRect(0, 0, Noita.GAME_WIDTH, Noita.HEIGHT);
             for(int y = 0; y < Engine.height; y++) {
                 for(int x = 0; x < Engine.width; x++) {
-                    if (Engine.field[x][y] == null)           gc.setFill(Color.SILVER);  //TAN
+                    if (Engine.field[x][y] == null) gc.setFill(Color.SILVER);  //TAN
                     else if (Engine.field[x][y] instanceof Sand)   gc.setFill(Color.YELLOW);
                     else if (Engine.field[x][y] instanceof Water)  gc.setFill(Color.BLUE);
                     else if (Engine.field[x][y] instanceof Steam)  gc.setFill(Color.rgb(198,215,215));
@@ -74,7 +87,7 @@ public class Engine {
                     else if (Engine.field[x][y] instanceof Oil)    gc.setFill(Color.rgb(43,7,49));
                     else if (Engine.field[x][y] instanceof Wood)   gc.setFill(Color.rgb(115, 67, 16));
                     else if (Engine.field[x][y] instanceof Fire)  { if (Math.random() < 0.5) gc.setFill(Color.ORANGERED);
-                    else                     gc.setFill(Color.ORANGE); }
+                                                                    else gc.setFill(Color.ORANGE); }
                     gc.fillRect(x,y,1,1);
                 }
             }
