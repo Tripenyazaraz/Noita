@@ -2,11 +2,11 @@ package Particle;
 
 import Main.Engine;
 
-public class Fire extends BaseParticle {
-    //конструктор
+public class Fire extends AbstractParticle {
+    public static int velocity = 1;
+
     public Fire(int x, int y) {
-        this.x = x;
-        this.y = y;
+        super(x, y);
     }
 
     @Override

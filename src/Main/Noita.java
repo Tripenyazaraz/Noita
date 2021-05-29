@@ -10,10 +10,12 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.stage.WindowEvent;
 
+import java.awt.*;
 import java.util.TimerTask;
 import java.io.InputStream;
 import java.util.Timer;
@@ -25,15 +27,16 @@ public class Noita extends Application{
     public static final int HEIGHT = 500;
     public static final int BUTTON_WIDTH = 80;
     public static final int BUTTON_HEIGHT = 10;
-    public static final int ADDITIONAL_CANVAS_SIZE = 39;
+    public static final int ADDITIONAL_CANVAS_SIZE = 37;
+    public static final int MEXICAN_WALL = 4;
 
     //variables
     public static Engine engine = new Engine();
-    String whichButton;             //what button is pressed
-    String chosenParticle = "sand"; //which particle is chosen
-    String toPaste;                 //paste or erase
-    Boolean isPressed = false;      //is button pressed
-    Timer mouseTimer;               //global timer to mouseClick
+    String whichButton;              //what button is pressed
+    String chosenParticle = "erase"; //which particle is chosen
+    String toPaste;                  //paste or erase
+    Boolean isPressed = false;       //is button pressed
+    Timer mouseTimer;                //global timer to mouseClick
 
     int mouseX = 0; //for current mouse position
     int mouseY = 0;
@@ -53,6 +56,7 @@ public class Noita extends Application{
             System.exit(0);
         });
         Canvas canvas = createGUI(mainStage);
+
         //Draw Task
         TimerTask drawTask = new TimerTask() {
             @Override
@@ -64,14 +68,14 @@ public class Noita extends Application{
         Timer timerDraw = new Timer();
         timerDraw.scheduleAtFixedRate(drawTask,0,drawPerSecond);
 
-        //Physic step Task
+        //Physic Task
         TimerTask stepTask = new TimerTask() {
             @Override
             public void run() {
                 engine.step();
             }
         };
-        //Physic step Timer
+        //Physic Timer
         Timer timerStep = new Timer();
         timerStep.scheduleAtFixedRate(stepTask,0,stepPerSecond);
     }
@@ -81,7 +85,7 @@ public class Noita extends Application{
         mainStage.getIcons().add(getImage("/Images/icon2.png"));
 
         //group and canvas
-        HBox root = new HBox();
+        HBox root = new HBox(MEXICAN_WALL);
         Canvas canvas = new Canvas(GAME_WIDTH, HEIGHT);
 
         //mouseTask
@@ -127,52 +131,63 @@ public class Noita extends Application{
 
         //particle menu
         VBox menu = new VBox(10);
-        menu.setStyle("-fx-background-color: #5D5D5D;");
+        menu.setStyle("-fx-background-color: #45464a;");
         menu.setPadding(new Insets(10,10,10,12)); //Top 0 0 Left
             //label
             Label label1 = new Label("Choose particle");
             label1.setWrapText(true);
+            label1.setTextFill(Color.rgb(250,250,250));
             menu.getChildren().add(label1);
             //eraseAll button
             Button eraseAll = new Button("ERASE ALL");
             eraseAll.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
             eraseAll.setOnAction(event -> engine.clean());
             menu.getChildren().add(eraseAll);
-            //sand button
-            Button sand = new Button("Sand");
-            sand.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
-            sand.setOnAction(event -> chosenParticle = "sand");
-            menu.getChildren().add(sand);
-            //water button
-            Button water = new Button("Water");
-            water.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
-            water.setOnAction(event -> chosenParticle = "water");
-            menu.getChildren().add(water);
-            //steam button
-            Button steam = new Button("Steam");
-            steam.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
-            steam.setOnAction(event -> chosenParticle = "steam");
-            menu.getChildren().add(steam);
-            //stone button
-            Button stone = new Button("Stone");
-            stone.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
-            stone.setOnAction(event -> chosenParticle = "stone");
-            menu.getChildren().add(stone);
-            //acid button
-            Button acid = new Button("Acid");
-            acid.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
-            acid.setOnAction(event -> chosenParticle = "acid");
-            menu.getChildren().add(acid);
-            //oil button
-            Button oil = new Button("Oil");
-            oil.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
-            oil.setOnAction(event -> chosenParticle = "oil");
-            menu.getChildren().add(oil);
-            //wood button
-            Button wood = new Button("Wood");
-            wood.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
-            wood.setOnAction(event -> chosenParticle = "wood");
-            menu.getChildren().add(wood);
+            //Smoke button
+            Button btnSmoke = new Button("Smoke");
+            btnSmoke.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
+            btnSmoke.setOnAction(event -> chosenParticle = "smoke");
+            menu.getChildren().add(btnSmoke);
+            //Steam button
+            Button btnSteam = new Button("Steam");
+            btnSteam.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
+            btnSteam.setOnAction(event -> chosenParticle = "steam");
+            menu.getChildren().add(btnSteam);
+            //Acid button
+            Button btnAcid = new Button("Acid");
+            btnAcid.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
+            btnAcid.setOnAction(event -> chosenParticle = "acid");
+            menu.getChildren().add(btnAcid);
+            //Oil button
+            Button btnOil = new Button("Oil");
+            btnOil.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
+            btnOil.setOnAction(event -> chosenParticle = "oil");
+            menu.getChildren().add(btnOil);
+            //Water button
+            Button btnWater = new Button("Water");
+            btnWater.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
+            btnWater.setOnAction(event -> chosenParticle = "water");
+            menu.getChildren().add(btnWater);
+            //Stone button
+            Button btnStone = new Button("Stone");
+            btnStone.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
+            btnStone.setOnAction(event -> chosenParticle = "stone");
+            menu.getChildren().add(btnStone);
+            //Wood button
+            Button btnWood = new Button("Wood");
+            btnWood.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
+            btnWood.setOnAction(event -> chosenParticle = "wood");
+            menu.getChildren().add(btnWood);
+            //Wood button
+            Button btnSalt = new Button("Salt");
+            btnSalt.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
+            btnSalt.setOnAction(event -> chosenParticle = "salt");
+            menu.getChildren().add(btnSalt);
+            //Sand button
+            Button btnSand = new Button("Sand");
+            btnSand.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
+            btnSand.setOnAction(event -> chosenParticle = "sand");
+            menu.getChildren().add(btnSand);
             //fire button
             Button fire = new Button("Fire");
             fire.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
@@ -181,6 +196,7 @@ public class Noita extends Application{
             //label
             Label label2 = new Label("LMB to create RMB to erase");
             label2.setWrapText(true);
+            label1.setTextFill(Color.rgb(250,250,250));
             menu.getChildren().add(label2);
         //group add particle menu
         root.getChildren().add(menu);
@@ -189,7 +205,7 @@ public class Noita extends Application{
         Scene scene = new Scene(root);
         mainStage.setScene(scene);
         mainStage.setTitle("Noita");
-        mainStage.setWidth(GAME_WIDTH + MENU_WIDTH);
+        mainStage.setWidth(GAME_WIDTH + MENU_WIDTH + MEXICAN_WALL);
         mainStage.setHeight(HEIGHT + ADDITIONAL_CANVAS_SIZE);
         mainStage.setResizable(false);
         mainStage.show();
