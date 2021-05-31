@@ -25,6 +25,20 @@ public class Engine {
     Integer[] rx = new Integer[width];
     Integer[] ry = new Integer[height];
 
+    Color emptyColor = Color.BLACK;
+    Color smokeColor = Color.rgb(88,88,88);
+    Color steamColor = Color.rgb(198,215,215);
+    Color acidColor  = Color.LIMEGREEN;
+    Color oilColor   = Color.rgb(43,7,49);
+    Color waterColor = Color.BLUE;
+    Color stoneColor = Color.rgb(91,85,77);
+    Color woodColor  = Color.rgb(115,67,16);
+    Color saltColor  = Color.WHITESMOKE;
+    Color sandColor  = Color.YELLOW;
+    Color fireColor1 = Color.ORANGERED;
+    Color fireColor2 = Color.ORANGE;
+
+
     public Engine() {
         for(int x = 0; x <= width-1; x++) rx[x]=x;
         for(int y = 0; y <= height-1; y++) ry[y]=y;
@@ -85,23 +99,24 @@ public class Engine {
             for(int y = 0; y < Engine.height; y++) {
                 for(int x = 0; x < Engine.width; x++) {
                         //Empty
-                    if (Engine.field[x][y] == null) gc.setFill(Color.BLACK);
+                    if (Engine.field[x][y] == null) gc.setFill(emptyColor);
                         //Gases
-                    else if (Engine.field[x][y] instanceof Smoke) gc.setFill(Color.rgb(88,88,88));
-                    else if (Engine.field[x][y] instanceof Steam) gc.setFill(Color.rgb(198,215,215));
+                    else if (Engine.field[x][y] instanceof Smoke) gc.setFill(smokeColor);
+                    else if (Engine.field[x][y] instanceof Steam) gc.setFill(steamColor);
                         //Liquids
-                    else if (Engine.field[x][y] instanceof Acid)  gc.setFill(Color.LIMEGREEN);
-                    else if (Engine.field[x][y] instanceof Oil)   gc.setFill(Color.rgb(43,7,49));
-                    else if (Engine.field[x][y] instanceof Water) gc.setFill(Color.BLUE);
+                    else if (Engine.field[x][y] instanceof Acid)  gc.setFill(acidColor);
+                    else if (Engine.field[x][y] instanceof Oil)   gc.setFill(oilColor);
+                    else if (Engine.field[x][y] instanceof Water) gc.setFill(waterColor);
                         //Immovable solids
-                    else if (Engine.field[x][y] instanceof Stone) gc.setFill(Color.rgb(91,85,77));
-                    else if (Engine.field[x][y] instanceof Wood)  gc.setFill(Color.rgb(115,67,16));
+                    else if (Engine.field[x][y] instanceof Stone) gc.setFill(stoneColor);
+                    else if (Engine.field[x][y] instanceof Wood)  gc.setFill(woodColor);
                         //Movable solids
-                    else if (Engine.field[x][y] instanceof Salt) gc.setFill(Color.WHITESMOKE);
-                    else if (Engine.field[x][y] instanceof Sand) gc.setFill(Color.YELLOW);
+                    else if (Engine.field[x][y] instanceof Salt)  gc.setFill(saltColor);
+                    else if (Engine.field[x][y] instanceof Sand)  gc.setFill(sandColor);
                         //Fire
-                    else if (Engine.field[x][y] instanceof Fire) { if (Math.random() < 0.5) gc.setFill(Color.ORANGERED);
-                                                                   else gc.setFill(Color.ORANGE); }
+                    else if (Engine.field[x][y] instanceof Fire) { if (Math.random() < 0.5) gc.setFill(fireColor1);
+                                                                   else                     gc.setFill(fireColor2); }
+
                     gc.fillRect(x,y,1,1);
                 }
             }

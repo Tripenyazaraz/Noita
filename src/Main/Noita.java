@@ -13,9 +13,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.stage.WindowEvent;
 
-import java.awt.*;
 import java.util.TimerTask;
 import java.io.InputStream;
 import java.util.Timer;
@@ -44,6 +42,8 @@ public class Noita extends Application{
     int H = 10;
     int stepPerSecond = 3;  //rate of physic step and draw
     int drawPerSecond = 50;
+
+    Color labelColor = Color.rgb(250,250,250);
 
     public static void main(String[] args) {
         Application.launch(args);
@@ -136,7 +136,7 @@ public class Noita extends Application{
             //label
             Label label1 = new Label("Choose particle");
             label1.setWrapText(true);
-            label1.setTextFill(Color.rgb(250,250,250));
+            label1.setTextFill(labelColor);
             menu.getChildren().add(label1);
             //eraseAll button
             Button eraseAll = new Button("ERASE ALL");
@@ -196,7 +196,7 @@ public class Noita extends Application{
             //label
             Label label2 = new Label("LMB to create RMB to erase");
             label2.setWrapText(true);
-            label1.setTextFill(Color.rgb(250,250,250));
+            label1.setTextFill(labelColor);
             menu.getChildren().add(label2);
         //group add particle menu
         root.getChildren().add(menu);

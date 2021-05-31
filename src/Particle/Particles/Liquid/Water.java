@@ -35,7 +35,5 @@ public class Water extends AbstractLiquid {
         else if (leftEmpty & rightEmpty) Engine.field[x][y].moveTo(x+k,y);
         else if (leftEmpty)              Engine.field[x][y].moveTo(x-1,y);
         else if (rightEmpty)             Engine.field[x][y].moveTo(x+1,y);
-
-        System.out.println(getDensity());
     }
 }
