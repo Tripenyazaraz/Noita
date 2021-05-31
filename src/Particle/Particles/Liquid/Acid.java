@@ -19,10 +19,6 @@ public class Acid extends AbstractLiquid {
         return this.velocity;
     }
 
-    public int getFlammability() {
-        return this.flammability;
-    }
-
     @Override
     public void update() {
         super.update();

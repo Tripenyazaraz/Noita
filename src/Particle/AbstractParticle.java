@@ -17,7 +17,7 @@ import Particle.Particles.Solid.ImmovableSolid.Wood;
 public class AbstractParticle {
     public int x;
     public int y;
-    public int flammability = 0;
+    public double flammability = 0;
     public int velocity = 1;
     public int density = 0;
 
@@ -60,6 +60,7 @@ public class AbstractParticle {
     public Boolean is(String name, int x, int y) {
         if ((x <= Engine.width-1) & (y <= Engine.height-1) & (x >= 0) & (y >= 0)) {
             if (name.equalsIgnoreCase("empty")) return Engine.field[x][y] == null;
+            else if (name.equalsIgnoreCase("not empty")) return Engine.field[x][y] != null;
                 //Gases
             else if (name.equalsIgnoreCase("gas"))   return Engine.field[x][y] instanceof AbstractGas;
             else if (name.equalsIgnoreCase("smoke")) return Engine.field[x][y] instanceof Smoke;
@@ -91,7 +92,7 @@ public class AbstractParticle {
         return this.velocity;
     }
 
-    public int getFlammability() {
+    public double getFlammability() {
         return this.flammability;
     }
 }

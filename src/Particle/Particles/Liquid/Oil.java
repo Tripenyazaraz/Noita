@@ -5,7 +5,7 @@ import Particle.Particles.AbstractLiquid;
 
 public class Oil extends AbstractLiquid {
     public int velocity = 2;
-    public int flammability = 5;
+    public double flammability = 0.03;
     public int density = 1;
 
     public Oil(int x, int y) {
@@ -20,7 +20,7 @@ public class Oil extends AbstractLiquid {
         return this.velocity;
     }
 
-    public int getFlammability() {
+    public double getFlammability() {
         return this.flammability;
     }
 
