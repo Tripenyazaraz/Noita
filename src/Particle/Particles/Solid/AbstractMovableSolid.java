@@ -4,6 +4,8 @@ import Main.Engine;
 import Particle.Particles.AbstractSolid;
 
 public class AbstractMovableSolid extends AbstractSolid {
+    public double swapChance = 0.4;
+
     public AbstractMovableSolid(int x, int y) {
         super(x, y);
     }
@@ -18,19 +20,24 @@ public class AbstractMovableSolid extends AbstractSolid {
         Boolean downLeftPassable  = is("liquid",x-1,y+1) | is("gas",x-1,y+1);
         Boolean downRightPassable = is("liquid",x+1,y+1) | is("gas",x+1,y+1);
 
-        int k = 1;
-        if (Math.random() < 0.5) k = -1;
+        int k = (Math.random() < 0.5) ? 1 : -1;
 
-        if (downEmpty)    Engine.field[x][y].moveTo(  x,y+1);
-        else if (downPassable) Engine.field[x][y].swapWith(x,y+1);
+        if (downEmpty) Engine.field[x][y].moveTo(x,y+1);
+        else if (downPassable &
+                (Math.random() < swapChance)) Engine.field[x][y].swapWith(x,y+1);
 
-        else if (downLeftEmpty & downRightEmpty)       Engine.field[x][y].moveTo(  x+k,y+1);
-        else if (downLeftPassable & downRightPassable) Engine.field[x][y].swapWith(x+k,y+1);
+        else if (downLeftEmpty &
+                downRightEmpty) Engine.field[x][y].moveTo(x+k,y+1);
+        else if (downLeftPassable &
+                downRightPassable &
+                (Math.random() < swapChance)) Engine.field[x][y].swapWith(x+k,y+1);
 
-        else if (downLeftEmpty)    Engine.field[x][y].moveTo(  x-1,y+1);
-        else if (downLeftPassable) Engine.field[x][y].swapWith(x-1,y+1);
+        else if (downLeftEmpty) Engine.field[x][y].moveTo(x-1,y+1);
+        else if (downLeftPassable &
+                (Math.random() < swapChance)) Engine.field[x][y].swapWith(x-1,y+1);
 
-        else if (downRightEmpty)    Engine.field[x][y].moveTo(  x+1,y+1);
-        else if (downRightPassable) Engine.field[x][y].swapWith(x+1,y+1);
+        else if (downRightEmpty) Engine.field[x][y].moveTo(x+1,y+1);
+        else if (downRightPassable &
+                (Math.random() < swapChance)) Engine.field[x][y].swapWith(x+1,y+1);
     }
 }

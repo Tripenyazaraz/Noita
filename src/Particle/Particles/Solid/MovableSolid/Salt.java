@@ -25,8 +25,8 @@ public class Salt extends AbstractMovableSolid {
 
     public void event() {
         if (Math.random() < dissolveChance)
-            if (is("water",x-1,y-1) | is("water",x  ,y-1) | is("water",x+1,y-1) | is("water",x-1,y  ) |
-                    is("water",x+1,y  ) | is("water",x-1,y+1) | is("water",x  ,y+1) | is("water",x+1,y+1))
+            if (is("water",x-1,y-1) | is("water",x,y-1) | is("water",x+1,y-1) | is("water",x-1,y) |
+                    is("water",x+1,y) | is("water",x-1,y+1) | is("water",x,y+1) | is("water",x+1,y+1))
                 if (Math.random() < incWaterAmountChance)
                     Noita.engine.createParticle("water",x,y);
                 else Engine.field[x][y] = null;
