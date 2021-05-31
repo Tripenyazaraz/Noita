@@ -19,24 +19,27 @@ import java.util.Collections;
 import java.util.List;
 
 public class Engine {
+    //CONSTANTS
     public static int width = Noita.GAME_WIDTH;
     public static int height = Noita.HEIGHT;
     public static AbstractParticle[][] field = new AbstractParticle[width][height];
+
+    public static final Color emptyColor = Color.BLACK;
+    public static final Color smokeColor = Color.rgb(88,88,88);
+    public static final Color steamColor = Color.rgb(198,215,215);
+    public static final Color acidColor  = Color.LIMEGREEN;
+    public static final Color oilColor   = Color.rgb(43,7,49);
+    public static final Color waterColor = Color.BLUE;
+    public static final Color stoneColor = Color.rgb(91,85,77);
+    public static final Color woodColor  = Color.rgb(115,67,16);
+    public static final Color saltColor  = Color.WHITESMOKE;
+    public static final Color sandColor  = Color.YELLOW;
+    public static final Color fireColor1 = Color.ORANGERED;
+    public static final Color fireColor2 = Color.ORANGE;
+
+    //VARIABLES
     Integer[] rx = new Integer[width];
     Integer[] ry = new Integer[height];
-
-    Color emptyColor = Color.BLACK;
-    Color smokeColor = Color.rgb(88,88,88);
-    Color steamColor = Color.rgb(198,215,215);
-    Color acidColor  = Color.LIMEGREEN;
-    Color oilColor   = Color.rgb(43,7,49);
-    Color waterColor = Color.BLUE;
-    Color stoneColor = Color.rgb(91,85,77);
-    Color woodColor  = Color.rgb(115,67,16);
-    Color saltColor  = Color.WHITESMOKE;
-    Color sandColor  = Color.YELLOW;
-    Color fireColor1 = Color.ORANGERED;
-    Color fireColor2 = Color.ORANGE;
 
 
     public Engine() {

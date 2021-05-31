@@ -28,6 +28,8 @@ public class Noita extends Application{
     public static final int ADDITIONAL_CANVAS_SIZE = 37;
     public static final int MEXICAN_WALL = 4;
 
+    public static final Color labelColor = Color.rgb(250,250,250);
+
     //variables
     public static Engine engine = new Engine();
     String whichButton;              //what button is pressed
@@ -42,8 +44,6 @@ public class Noita extends Application{
     int H = 10;
     int stepPerSecond = 3;  //rate of physic step and draw
     int drawPerSecond = 50;
-
-    Color labelColor = Color.rgb(250,250,250);
 
     public static void main(String[] args) {
         Application.launch(args);
