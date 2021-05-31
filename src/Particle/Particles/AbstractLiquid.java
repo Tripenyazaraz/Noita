@@ -30,6 +30,7 @@ public class AbstractLiquid extends AbstractParticle {
         if (Math.random() < 0.5) velMove = -this.getVelocity();
 
         if (downEmpty) Engine.field[x][y].moveTo(x,y+1);
+
         else if (downLeftEmpty &
                 downRightEmpty) Engine.field[x][y].moveTo(x+k,y+1);
         else if (downLeftEmpty)  Engine.field[x][y].moveTo(x-1,y+1);
