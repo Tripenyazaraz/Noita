@@ -9,6 +9,11 @@ public class Stone extends AbstractImmovableSolid {
 
     @Override
     public void update() {
-        //i am stay still
+        super.update();
+        event();
+    }
+
+    public void event() {
+
     }
 }

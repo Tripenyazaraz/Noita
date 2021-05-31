@@ -210,7 +210,7 @@ public class Noita extends Application{
         mainStage.setResizable(false);
         mainStage.show();
 
-        //return graphics context
+        //return canvas
         return canvas;
     }
     //return imageStream
