@@ -5,6 +5,7 @@ import Main.Noita;
 
 public class Fire extends AbstractParticle {
     public static int velocity = 5;
+    boolean doSpawnSmoke = false;
 
     public Fire(int x, int y) {
         super(x, y);
@@ -28,7 +29,8 @@ public class Fire extends AbstractParticle {
         }
 
         if (death && Math.random() < 0.05) {
-            Engine.field[x][y] = null;
+            if (doSpawnSmoke) Noita.engine.createParticle("smoke",x,y);
+            else Engine.field[x][y] = null;
         }
     }
 
@@ -37,7 +39,7 @@ public class Fire extends AbstractParticle {
             if (Engine.field[x][y].getFlammability() > 0) {
                 if (Math.random() < Engine.field[x][y].getFlammability()) {
                     Noita.engine.createParticle("fire", x, y);
-//                    Noita.engine.createParticle("smoke",this.x,this.y);
+                    this.doSpawnSmoke = true;
                 }
                 return false;
             } else return true;
