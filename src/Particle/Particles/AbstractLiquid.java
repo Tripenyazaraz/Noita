@@ -20,32 +20,42 @@ public class AbstractLiquid extends AbstractParticle {
         boolean leftVelocityEmpty  = is("empty",x-this.getVelocity(),y);
         boolean rightVelocityEmpty = is("empty",x+this.getVelocity(),y);
 
-        boolean downLiquid      = is("liquid",x  ,y+1);
-        boolean downLeftLiquid  = is("liquid",x-1,y+1);
-        boolean downRightLiquid = is("liquid",x+1,y+1);
-        boolean leftLiquid      = is("liquid",x-1,y);
-        boolean rightLiquid     = is("liquid",x+1,y);
-        boolean leftVelocityLiquid  = is("empty",x-this.getVelocity(),y);
-        boolean rightVelocityLiquid = is("empty",x+this.getVelocity(),y);
+        boolean downPassable      = checkDensity(x  ,y+1);
+        boolean downLeftPassable  = checkDensity(x-1,y+1);
+        boolean downRightPassable = checkDensity(x+1,y+1);
+        boolean leftPassable      = checkDensity(x-1,y);
+        boolean rightPassable     = checkDensity(x+1,y);
+        boolean leftVelocityPassable  = checkDensity(x-this.getVelocity(),y);
+        boolean rightVelocityPassable = checkDensity(x+this.getVelocity(),y);
 
         int k = (Math.random() < 0.5) ? 1 : -1;
         int velocityMove = (Math.random() < 0.5) ? this.getVelocity() : -this.getVelocity();
 
-        if (downEmpty) Engine.field[x][y].moveTo(x,y+1);
+            //DOWN
+        if (downEmpty | downPassable) Engine.field[x][y].swapWith(x,y+1);
+            //DOWN BOTH
+        else if ((downLeftEmpty & downRightEmpty) |
+                (downLeftPassable & downRightPassable)) Engine.field[x][y].swapWith(x+k,y+1);
+            //DOWN LEFT & RIGHT
+        else if (downLeftEmpty | downLeftPassable)   Engine.field[x][y].swapWith(x-1,y+1);
+        else if (downRightEmpty | downRightPassable) Engine.field[x][y].swapWith(x+1,y+1);
+            //LEFT VELOCITY BOTH
+        else if ((leftVelocityEmpty & rightVelocityEmpty) |
+                (leftVelocityPassable & rightVelocityPassable)) Engine.field[x][y].swapWith(x+velocityMove,y);
+            //LEFT & RIGHT VELOCITY
+        else if (leftVelocityEmpty | leftVelocityPassable)   Engine.field[x][y].swapWith(x-this.getVelocity(),y);
+        else if (rightVelocityEmpty | rightVelocityPassable) Engine.field[x][y].swapWith(x+this.getVelocity(),y);
+            //BOTH
+        else if ((leftEmpty & rightEmpty) |
+                (leftPassable & rightPassable)) Engine.field[x][y].swapWith(x+k,y);
+            //LEFT & RIGHT
+        else if (leftEmpty | leftPassable)   Engine.field[x][y].swapWith(x-1,y);
+        else if (rightEmpty | rightPassable) Engine.field[x][y].swapWith(x+1,y);
+    }
 
-        else if (downLeftEmpty &
-                downRightEmpty) Engine.field[x][y].moveTo(x+k,y+1);
-        else if (downLeftEmpty)  Engine.field[x][y].moveTo(x-1,y+1);
-        else if (downRightEmpty) Engine.field[x][y].moveTo(x+1,y+1);
-
-        else if (leftVelocityEmpty &
-                rightVelocityEmpty) Engine.field[x][y].moveTo(x+velocityMove,y);
-        else if (leftVelocityEmpty)  Engine.field[x][y].moveTo(x-this.getVelocity(),y);
-        else if (rightVelocityEmpty) Engine.field[x][y].moveTo(x+this.getVelocity(),y);
-
-        else if (leftEmpty &
-                rightEmpty) Engine.field[x][y].moveTo(x+k,y);
-        else if (leftEmpty)  Engine.field[x][y].moveTo(x-1,y);
-        else if (rightEmpty) Engine.field[x][y].moveTo(x+1,y);
+    public Boolean checkDensity(int x, int y) {
+        if (is("liquid",x,y) | is("gas",x,y)) {
+            return Engine.field[x][y].getDensity() < Engine.field[this.x][this.y].getDensity();
+        } else return false;
     }
 }

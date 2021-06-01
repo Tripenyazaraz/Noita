@@ -15,7 +15,7 @@ public class Fire extends AbstractParticle {
     public void update() {
         boolean death = true;
 
-        for (int k = 1; k <= Fire.velocity+2; k++) {
+        for (int k = 1; k <= Fire.velocity-1; k++) {
             if (is("water",x-k,y-k)) Engine.field[x][y] = null;
             if (is("water",x  ,y-k)) Engine.field[x][y] = null;
             if (is("water",x+k,y-k)) Engine.field[x][y] = null;

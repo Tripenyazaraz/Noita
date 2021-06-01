@@ -52,10 +52,6 @@ public class Noita extends Application{
 
     @Override
     public void start(Stage mainStage) {
-        mainStage.setOnCloseRequest(event -> {
-            Platform.exit();
-            System.exit(0);
-        });
         Canvas canvas = createGUI(mainStage);
 
         //Draw Task
@@ -79,6 +75,13 @@ public class Noita extends Application{
         //Physic Timer
         Timer timerStep = new Timer();
         timerStep.scheduleAtFixedRate(stepTask,0,stepPerSecond);
+        //Close event
+        mainStage.setOnCloseRequest(event -> {
+            timerStep.cancel();
+            timerDraw.cancel();
+            Platform.exit();
+            System.exit(0);
+        });
     }
 
     //create all GUI and return canvas

@@ -49,13 +49,15 @@ public class AbstractParticle {
 
     public void swapWith(int x, int y) {
         if (Engine.field[this.x][this.y] != null) {
-            int a = 0;
-            int b = 0;
-            Engine.field[x][y].moveTo(a,b);
-            int oldX = this.x;
-            int oldY = this.y;
-            Engine.field[this.x][this.y].moveTo(x,y);
-            Engine.field[a][b].moveTo(oldX,oldY);
+            if (Engine.field[x][y] != null) {
+                int a = 0;
+                int b = 0;
+                Engine.field[x][y].moveTo(a, b);
+                int oldX = this.x;
+                int oldY = this.y;
+                Engine.field[this.x][this.y].moveTo(x, y);
+                Engine.field[a][b].moveTo(oldX, oldY);
+            } else moveTo(x,y);
         }
     }
 

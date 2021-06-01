@@ -7,6 +7,7 @@ import Particle.Particles.AbstractLiquid;
 public class Acid extends AbstractLiquid {
     public int velocity = 5;
     public int density = 10;
+    public double dissolveChance = 0.04;
 
     public Acid(int x, int y) {
         super(x, y);
@@ -41,9 +42,12 @@ public class Acid extends AbstractLiquid {
     }
 
     public void check(int x, int y) {
-        if (is("solid",x,y))
+        if (is("solid",x,y)) {
             if (Engine.field[x][y].getAcidability() > 0)
                 if (Math.random() < Engine.field[x][y].getAcidability())
                     Engine.field[x][y] = null;
+        } else if (is("water",x,y))
+            if (Math.random() < dissolveChance)
+                Noita.engine.createParticle("water",this.x,this.y);
     }
 }

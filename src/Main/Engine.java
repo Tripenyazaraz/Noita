@@ -68,6 +68,7 @@ public class Engine {
     public void clean() {
         for(int y = height-1; y >= 0; y--) {
             for(int x = 0; x <= width-1; x++) {
+
                 field[x][y] = null;
             }
         }

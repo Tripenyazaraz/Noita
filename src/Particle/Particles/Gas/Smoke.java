@@ -5,7 +5,7 @@ import Particle.Particles.AbstractGas;
 
 public class Smoke extends AbstractGas {
     public int velocity = 3;
-    public int density = 3;
+    public int density = -3;
 
     public Smoke(int x, int y) {
         super(x, y);

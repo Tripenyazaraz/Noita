@@ -5,7 +5,7 @@ import Particle.Particles.AbstractGas;
 
 public class Steam extends AbstractGas {
     public int velocity = 3;
-    public int density = 1;
+    public int density = -1;
 
     public Steam(int x, int y) {
         super(x, y);
