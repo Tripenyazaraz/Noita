@@ -1,6 +1,7 @@
 package Particle.Particles.Liquid;
 
-import Main.*;
+import Main.Engine;
+import Particle.Fire;
 import Particle.Particles.AbstractLiquid;
 
 public class Water extends AbstractLiquid {
