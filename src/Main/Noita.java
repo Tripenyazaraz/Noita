@@ -7,6 +7,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.*;
@@ -142,6 +143,7 @@ public class Noita extends Application{
             Button eraseAll = new Button("ERASE ALL");
             eraseAll.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
             eraseAll.setOnAction(event -> engine.clean());
+            //eraseAll.setGraphic(new ImageView("/images/icon2.png"));
             menu.getChildren().add(eraseAll);
             //Smoke button
             Button btnSmoke = new Button("Smoke");
