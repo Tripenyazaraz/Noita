@@ -95,7 +95,7 @@ public class AbstractParticle {
     }
 
     public double getAcidability() {
-        return acidability;
+        return this.acidability;
     }
 
     public int getDensity() {

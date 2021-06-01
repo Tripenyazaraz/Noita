@@ -53,6 +53,8 @@ public class AbstractLiquid extends AbstractParticle {
 
     public Boolean checkDensity(int x, int y) {
         if (is("liquid",x,y) | is("gas",x,y)) {
+            if (Engine.field[x][y] == null) return false;
+            if (Engine.field[this.x][this.y] == null) return false;
             return Engine.field[x][y].getDensity() < Engine.field[this.x][this.y].getDensity();
         } else return false;
     }

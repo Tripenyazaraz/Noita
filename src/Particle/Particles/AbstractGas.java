@@ -49,27 +49,12 @@ public class AbstractGas extends AbstractParticle {
             //LEFT & RIGHT
         else if (leftEmpty | leftPassable)   Engine.field[x][y].swapWith(x-1,y);
         else if (rightEmpty | rightPassable) Engine.field[x][y].swapWith(x+1,y);
-
-//        if (upEmpty) Engine.field[x][y].moveTo(x,y-1);
-//
-//        else if (upLeftEmpty &
-//                upRightEmpty)  Engine.field[x][y].moveTo(x+k,y-1);
-//        else if (upLeftEmpty)  Engine.field[x][y].moveTo(x-1,y-1);
-//        else if (upRightEmpty) Engine.field[x][y].moveTo(x+1,y-1);
-//
-//        else if (leftVelocityEmpty &
-//                rightVelocityEmpty)  Engine.field[x][y].moveTo(x+velocityMove,y);
-//        else if (leftVelocityEmpty)  Engine.field[x][y].moveTo(x-this.getVelocity(),y);
-//        else if (rightVelocityEmpty) Engine.field[x][y].moveTo(x+this.getVelocity(),y);
-//
-//        else if (leftEmpty &
-//                rightEmpty)  Engine.field[x][y].moveTo(x+k,y);
-//        else if (leftEmpty)  Engine.field[x][y].moveTo(x-1,y);
-//        else if (rightEmpty) Engine.field[x][y].moveTo(x+1,y);
     }
 
     public Boolean checkDensity(int x, int y) {
         if (is("liquid",x,y) | is("gas",x,y)) {
+            if (Engine.field[x][y] == null) return false;
+            if (Engine.field[this.x][this.y] == null) return false;
             return Engine.field[x][y].getDensity() < Engine.field[this.x][this.y].getDensity();
         } else return false;
     }

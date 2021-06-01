@@ -66,12 +66,13 @@ public class Engine {
 
     //очищение
     public void clean() {
-        for(int y = height-1; y >= 0; y--) {
-            for(int x = 0; x <= width-1; x++) {
-
-                field[x][y] = null;
+        Platform.runLater(()-> {
+            for (int y = height - 1; y >= 0; y--) {
+                for (int x = 0; x <= width - 1; x++) {
+                    field[x][y] = null;
+                }
             }
-        }
+        });
     }
 
     //создание частицы
