@@ -39,14 +39,6 @@ public class AbstractParticle {
         }
     }
 
-//    public int moveCheck() {
-//
-//    }
-//
-//    public void moveConfirm() {
-//
-//    }
-
     public void swapWith(int x, int y) {
         if (Engine.field[this.x][this.y] != null) {
             if (Engine.field[x][y] != null) {

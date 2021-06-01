@@ -1,6 +1,5 @@
 package Particle.Particles.Gas;
 
-import Main.Engine;
 import Particle.Particles.AbstractGas;
 
 public class Smoke extends AbstractGas {

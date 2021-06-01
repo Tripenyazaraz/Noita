@@ -1,6 +1,5 @@
 package Particle.Particles.Liquid;
 
-import Main.Engine;
 import Particle.Particles.AbstractLiquid;
 
 public class Oil extends AbstractLiquid {
