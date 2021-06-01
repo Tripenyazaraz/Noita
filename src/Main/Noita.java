@@ -143,11 +143,10 @@ public class Noita extends Application{
             label1.setTextFill(labelColor);
             menu.getChildren().add(label1);
             //eraseAll button
-            Button eraseAll = new Button("ERASE ALL");
-            eraseAll.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
-            eraseAll.setOnAction(event -> engine.clean());
-            //eraseAll.setGraphic(new ImageView("/images/icon2.png"));
-            menu.getChildren().add(eraseAll);
+//            Button eraseAll = new Button("ERASE ALL");
+//            eraseAll.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
+//            eraseAll.setOnAction(event -> engine.clean());
+//            menu.getChildren().add(eraseAll);
             //Smoke button
             Button btnSmoke = new Button("Smoke");
             btnSmoke.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
