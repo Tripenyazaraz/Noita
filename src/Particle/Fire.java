@@ -12,7 +12,7 @@ public class Fire extends AbstractParticle {
 
     @Override
     public void update() {
-        Boolean death = true;
+        boolean death = true;
 
         for (int k = 1; k < velocity; k++) {
             if (!(check(x-k,y-k))) death = false;
@@ -33,12 +33,14 @@ public class Fire extends AbstractParticle {
     }
 
     public Boolean check(int x, int y) {
-        if (is("not empty",x,y))
-            if (Math.random() < Engine.field[x][y].getFlammability()) {
-                Noita.engine.createParticle("fire",x,y);
+        if (is("not empty",x,y)) {
+            if (Engine.field[x][y].getFlammability() > 0) {
+                if (Math.random() < Engine.field[x][y].getFlammability()) {
+                    Noita.engine.createParticle("fire", x, y);
+//                    Noita.engine.createParticle("smoke",this.x,this.y);
+                }
                 return false;
-            }
-            else return true;
-        else return true;
+            } else return true;
+        } else return true;
     }
 }

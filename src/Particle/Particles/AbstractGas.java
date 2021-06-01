@@ -10,13 +10,13 @@ public class AbstractGas extends AbstractParticle {
 
     @Override
     public void update() {
-        Boolean upEmpty      = is("empty",x,  y-1);
-        Boolean upLeftEmpty  = is("empty",x-1,y-1);
-        Boolean upRightEmpty = is("empty",x+1,y-1);
-        Boolean leftEmpty    = is("empty",x-1,y);
-        Boolean rightEmpty   = is("empty",x+1,y);
-        Boolean leftVelocityEmpty  = is("empty",x-this.getVelocity(),y);
-        Boolean rightVelocityEmpty = is("empty",x+this.getVelocity(),y);
+        boolean upEmpty      = is("empty",x,  y-1);
+        boolean upLeftEmpty  = is("empty",x-1,y-1);
+        boolean upRightEmpty = is("empty",x+1,y-1);
+        boolean leftEmpty    = is("empty",x-1,y);
+        boolean rightEmpty   = is("empty",x+1,y);
+        boolean leftVelocityEmpty  = is("empty",x-this.getVelocity(),y);
+        boolean rightVelocityEmpty = is("empty",x+this.getVelocity(),y);
 
         int k = (Math.random() < 0.5) ? 1 : -1;
         int velocityMove = (Math.random() < 0.5) ? this.getVelocity() : -this.getVelocity();

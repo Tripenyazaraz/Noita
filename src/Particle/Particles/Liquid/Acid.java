@@ -1,6 +1,7 @@
 package Particle.Particles.Liquid;
 
 import Main.Engine;
+import Main.Noita;
 import Particle.Particles.AbstractLiquid;
 
 public class Acid extends AbstractLiquid {
@@ -11,12 +12,13 @@ public class Acid extends AbstractLiquid {
         super(x, y);
     }
 
-    public int getDensity() {
-        return this.density;
-    }
-
+    @Override
     public int getVelocity() {
         return this.velocity;
+    }
+    @Override
+    public int getDensity() {
+        return this.density;
     }
 
     @Override
@@ -26,6 +28,22 @@ public class Acid extends AbstractLiquid {
     }
 
     public void event() {
+        check(x-1,y-1);
+        check(x  ,y-1);
+        check(x+1,y-1);
 
+        check(x-1,y  );
+        check(x+1,y  );
+
+        check(x-1,y+1);
+        check(x  ,y+1);
+        check(x+1,y+1);
+    }
+
+    public void check(int x, int y) {
+        if (is("solid",x,y))
+            if (Engine.field[x][y].getAcidability() > 0)
+                if (Math.random() < Engine.field[x][y].getAcidability())
+                    Engine.field[x][y] = null;
     }
 }

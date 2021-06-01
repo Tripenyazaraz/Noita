@@ -12,13 +12,13 @@ public class AbstractMovableSolid extends AbstractSolid {
 
     @Override
     public void update() {
-        Boolean downEmpty      = is("empty",x,  y+1);
-        Boolean downLeftEmpty  = is("empty",x-1,y+1);
-        Boolean downRightEmpty = is("empty",x+1,y+1);
+        boolean downEmpty      = is("empty",x,  y+1);
+        boolean downLeftEmpty  = is("empty",x-1,y+1);
+        boolean downRightEmpty = is("empty",x+1,y+1);
 
-        Boolean downPassable      = is("liquid",x,  y+1) | is("gas",x,  y+1);
-        Boolean downLeftPassable  = is("liquid",x-1,y+1) | is("gas",x-1,y+1);
-        Boolean downRightPassable = is("liquid",x+1,y+1) | is("gas",x+1,y+1);
+        boolean downPassable      = is("liquid",x,  y+1) | is("gas",x,  y+1);
+        boolean downLeftPassable  = is("liquid",x-1,y+1) | is("gas",x-1,y+1);
+        boolean downRightPassable = is("liquid",x+1,y+1) | is("gas",x+1,y+1);
 
         int k = (Math.random() < 0.5) ? 1 : -1;
 

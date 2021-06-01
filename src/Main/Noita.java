@@ -196,7 +196,7 @@ public class Noita extends Application{
             //label
             Label label2 = new Label("LMB to create RMB to erase");
             label2.setWrapText(true);
-            label1.setTextFill(labelColor);
+            label2.setTextFill(labelColor);
             menu.getChildren().add(label2);
         //group add particle menu
         root.getChildren().add(menu);

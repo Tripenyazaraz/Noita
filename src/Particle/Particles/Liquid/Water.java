@@ -11,12 +11,13 @@ public class Water extends AbstractLiquid {
         super(x, y);
     }
 
-    public int getDensity() {
-        return this.density;
-    }
-
+    @Override
     public int getVelocity() {
         return this.velocity;
+    }
+    @Override
+    public int getDensity() {
+        return this.density;
     }
 
     @Override

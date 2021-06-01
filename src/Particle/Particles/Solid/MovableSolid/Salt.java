@@ -5,6 +5,7 @@ import Main.Noita;
 import Particle.Particles.Solid.AbstractMovableSolid;
 
 public class Salt extends AbstractMovableSolid {
+    public double acidability = 0.013;
     public int velocity = 3;
     public static double dissolveChance = 0.04;
     public static double incWaterAmountChance = 0.25;
@@ -13,6 +14,11 @@ public class Salt extends AbstractMovableSolid {
         super(x, y);
     }
 
+    @Override
+    public double getAcidability() {
+        return this.acidability;
+    }
+    @Override
     public int getVelocity() {
         return this.velocity;
     }

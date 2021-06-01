@@ -12,21 +12,21 @@ public class AbstractLiquid extends AbstractParticle {
 
     @Override
     public void update() {
-        Boolean downEmpty      = is("empty",x  ,y+1) ;
-        Boolean downLeftEmpty  = is("empty",x-1,y+1);
-        Boolean downRightEmpty = is("empty",x+1,y+1);
-        Boolean leftEmpty      = is("empty",x-1,y);
-        Boolean rightEmpty     = is("empty",x+1,y);
-        Boolean leftVelocityEmpty  = is("empty",x-this.getVelocity(),y);
-        Boolean rightVelocityEmpty = is("empty",x+this.getVelocity(),y);
+        boolean downEmpty      = is("empty",x  ,y+1) ;
+        boolean downLeftEmpty  = is("empty",x-1,y+1);
+        boolean downRightEmpty = is("empty",x+1,y+1);
+        boolean leftEmpty      = is("empty",x-1,y);
+        boolean rightEmpty     = is("empty",x+1,y);
+        boolean leftVelocityEmpty  = is("empty",x-this.getVelocity(),y);
+        boolean rightVelocityEmpty = is("empty",x+this.getVelocity(),y);
 
-        Boolean downLiquid      = is("liquid",x  ,y+1);
-        Boolean downLeftLiquid  = is("liquid",x-1,y+1);
-        Boolean downRightLiquid = is("liquid",x+1,y+1);
-        Boolean leftLiquid      = is("liquid",x-1,y);
-        Boolean rightLiquid     = is("liquid",x+1,y);
-        Boolean leftVelocityLiquid  = is("empty",x-this.getVelocity(),y);
-        Boolean rightVelocityLiquid = is("empty",x+this.getVelocity(),y);
+        boolean downLiquid      = is("liquid",x  ,y+1);
+        boolean downLeftLiquid  = is("liquid",x-1,y+1);
+        boolean downRightLiquid = is("liquid",x+1,y+1);
+        boolean leftLiquid      = is("liquid",x-1,y);
+        boolean rightLiquid     = is("liquid",x+1,y);
+        boolean leftVelocityLiquid  = is("empty",x-this.getVelocity(),y);
+        boolean rightVelocityLiquid = is("empty",x+this.getVelocity(),y);
 
         int k = (Math.random() < 0.5) ? 1 : -1;
         int velocityMove = (Math.random() < 0.5) ? this.getVelocity() : -this.getVelocity();

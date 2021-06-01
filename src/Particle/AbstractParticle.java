@@ -3,6 +3,7 @@ package Particle;
 import Main.*;
 import Particle.Particles.AbstractGas;
 import Particle.Particles.AbstractLiquid;
+import Particle.Particles.AbstractSolid;
 import Particle.Particles.Gas.Smoke;
 import Particle.Particles.Gas.Steam;
 import Particle.Particles.Liquid.Acid;
@@ -18,6 +19,7 @@ public class AbstractParticle {
     public int x;
     public int y;
     public double flammability = 0;
+    public double acidability = 0;
     public int velocity = 1;
     public int density = 0;
 
@@ -70,6 +72,8 @@ public class AbstractParticle {
             else if (name.equalsIgnoreCase("acid"))   return Engine.field[x][y] instanceof Acid;
             else if (name.equalsIgnoreCase("oil"))    return Engine.field[x][y] instanceof Oil;
             else if (name.equalsIgnoreCase("water"))  return Engine.field[x][y] instanceof Water;
+                //Solid
+            else if (name.equalsIgnoreCase("solid")) return Engine.field[x][y] instanceof AbstractSolid;
                 //Immovable solids
             else if (name.equalsIgnoreCase("immovable solid")) return Engine.field[x][y] instanceof AbstractImmovableSolid;
             else if (name.equalsIgnoreCase("stone"))           return Engine.field[x][y] instanceof Stone;
@@ -84,15 +88,19 @@ public class AbstractParticle {
         } else return false;
     }
 
+    public double getFlammability() {
+        return this.flammability;
+    }
+
+    public double getAcidability() {
+        return acidability;
+    }
+
     public int getDensity() {
         return this.density;
     }
 
     public int getVelocity() {
         return this.velocity;
-    }
-
-    public double getFlammability() {
-        return this.flammability;
     }
 }

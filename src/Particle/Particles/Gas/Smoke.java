@@ -11,12 +11,13 @@ public class Smoke extends AbstractGas {
         super(x, y);
     }
 
-    public int getDensity() {
-        return this.density;
-    }
-
+    @Override
     public int getVelocity() {
         return this.velocity;
+    }
+    @Override
+    public int getDensity() {
+        return this.density;
     }
 
     @Override
