@@ -49,30 +49,31 @@ public class Engine {
 
     //шаг физики
     public void step() {
-        List<Integer> yList = Arrays.asList(ry);
-        Collections.shuffle(yList);
-        yList.toArray(ry);
-        for(int y = height-1; y >= 0; y--) {
-            List<Integer> xList = Arrays.asList(rx);
-            Collections.shuffle(xList);
-            xList.toArray(rx);
-            for(int x = 0; x <= width-1; x++) {
-                if (field[rx[x]][ry[y]] != null) {
-                    if (Math.random() < 0.8) field[rx[x]][ry[y]].update();
-                }
+        if (Noita.toClean) {
+            clean();
+        } else {
+            List<Integer> yList = Arrays.asList(ry);
+            Collections.shuffle(yList);
+            yList.toArray(ry);
+            for(int y = height-1; y >= 0; y--) {
+                List<Integer> xList = Arrays.asList(rx);
+                Collections.shuffle(xList);
+                xList.toArray(rx);
+                for(int x = 0; x <= width-1; x++)
+                    if (field[rx[x]][ry[y]] != null)
+                        if (Math.random() < 0.8) field[rx[x]][ry[y]].update();
             }
         }
     }
 
     //очищение
     public void clean() {
-        Platform.runLater(()-> {
             for (int y = height - 1; y >= 0; y--) {
                 for (int x = 0; x <= width - 1; x++) {
                     field[x][y] = null;
                 }
             }
-        });
+            Noita.toClean = false;
     }
 
     //создание частицы
