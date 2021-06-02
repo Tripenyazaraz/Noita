@@ -172,6 +172,11 @@ public class Noita extends Application{
             btnWater.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
             btnWater.setOnAction(event -> chosenParticle = "water");
             menu.getChildren().add(btnWater);
+            //Glass button
+            Button btnGlass = new Button("Glass");
+            btnGlass.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
+            btnGlass.setOnAction(event -> chosenParticle = "glass");
+            menu.getChildren().add(btnGlass);
             //Stone button
             Button btnStone = new Button("Stone");
             btnStone.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
