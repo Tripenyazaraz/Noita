@@ -3,7 +3,7 @@ package Particle.Particles.Solid;
 import Main.Engine;
 import Particle.Particles.AbstractSolid;
 
-public class AbstractMovableSolid extends AbstractSolid {
+public abstract class AbstractMovableSolid extends AbstractSolid {
     public double swapChance = 0.4;
 
     public AbstractMovableSolid(int x, int y) {

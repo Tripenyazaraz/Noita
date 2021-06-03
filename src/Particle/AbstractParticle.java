@@ -15,7 +15,7 @@ import Particle.Particles.Solid.MovableSolid.Sand;
 import Particle.Particles.Solid.ImmovableSolid.Stone;
 import Particle.Particles.Solid.ImmovableSolid.Wood;
 
-public class AbstractParticle {
+public abstract class AbstractParticle {
     public int x;
     public int y;
     public double flammability = 0;

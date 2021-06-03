@@ -3,7 +3,7 @@ package Particle.Particles;
 import Main.Engine;
 import Particle.AbstractParticle;
 
-public class AbstractGas extends AbstractParticle {
+public abstract class AbstractGas extends AbstractParticle {
     public AbstractGas(int x, int y) {
         super(x, y);
     }
