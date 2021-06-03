@@ -32,6 +32,7 @@ public class Noita extends Application{
 
     //variables
     public static Engine engine = new Engine();
+    public static boolean toClean = false;
     String whichButton;              //what button is pressed
     String chosenParticle = "erase"; //which particle is chosen
     String toPaste;                  //paste or erase
@@ -144,7 +145,7 @@ public class Noita extends Application{
             //eraseAll button
             Button eraseAll = new Button("ERASE ALL");
             eraseAll.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
-            eraseAll.setOnAction(event -> engine.clean());
+            eraseAll.setOnAction(event -> toClean = true);
             menu.getChildren().add(eraseAll);
             //Smoke button
             Button btnSmoke = new Button("Smoke");
@@ -171,6 +172,11 @@ public class Noita extends Application{
             btnWater.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
             btnWater.setOnAction(event -> chosenParticle = "water");
             menu.getChildren().add(btnWater);
+            //Glass button
+            Button btnGlass = new Button("Glass");
+            btnGlass.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
+            btnGlass.setOnAction(event -> chosenParticle = "glass");
+            menu.getChildren().add(btnGlass);
             //Stone button
             Button btnStone = new Button("Stone");
             btnStone.setMinSize(BUTTON_WIDTH, BUTTON_HEIGHT);
